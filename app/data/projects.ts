@@ -2,11 +2,6 @@ import type { Project } from "~/types/Project";
 
 export const projects: Project[] = [
     {
-        id: 'fy25-design-system',
-        title: 'Epicor FY25 Design System',
-        images: ['/case-studies/fy25/cover.svg'],
-    },
-    {
         id: 'web-menu-redesign',
         title: 'Web Menu Redesign',
         images: ['https://i.ibb.co/fSKCpb5/Frame-7-3.png'],

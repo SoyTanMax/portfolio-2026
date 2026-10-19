@@ -1,0 +1,85 @@
+---
+meta:
+  - title: "FY25 Design System · Max López"
+  - name: description
+    content: "Rebuilding Epicor's design library into a three-tier token system: 168 primitives, 400 semantic and 520 component tokens."
+---
+
+![FY25 Design System cover](/case-studies/fy25/cover.svg)
+
+# Epicor FY25 Design System
+
+### Token architecture for a global brand, from flat styles to a three-tier system.
+
+I rebuilt Epicor's design library from about 33 flat color styles with no variables into a three-tier token system: 168 primitives, 400 semantic tokens and 520 component tokens, with light and dark modes. With one other designer, I shipped 42 components on top of it. Epicor.com now runs on the FY25 system, apart from custom pages such as the Insights event sites.
+
+- **Role:** UX/UI Designer. I owned the token architecture, component quality, naming and documentation.
+- **Team:** two designers.
+- **Tools:** Figma variables, Figma MCP + Claude.
+
+## The problem: a library that couldn't change
+
+In FY23, changing a brand color meant building a manual replacement map and swapping values by hand. The library had been built by an outside agency and used styles only, with no variables. An audit of the FY23 file showed why it couldn't scale:
+
+- **Colors named by hue,** such as Petrol, Watermelon, Mauve and Peach Light. Names said what a color looked like, never where to use it.
+- **Mixed naming logic.** "Green Link" and "Type/ Grey" sat next to hue names, so there was no rule a new designer could follow.
+- **Hex values typed as text** next to each swatch. Documentation drifted silently whenever a color changed.
+- **Gradients named after placements,** such as "Mast Head Fill" and "Hero Block Fill". Each style was locked to one component.
+- **Pages of color replacement maps** pairing old values with new ones ("Teal = Petrol"). Every brand update was manual, page by page.
+- **Button variants duplicated by hand** for light and dark backgrounds, with "Disabled" and "Inactive" naming the same state.
+
+The replacement maps are the clearest symptom: without aliases, the system had no single place to make a change.
+
+{/* TODO: screenshot of the FY23 color styles page and one "Color Replacements" map */}
+
+## My role and how we split the work
+
+We split the work by layer. My teammate mapped every component already in production, so we knew what the system had to cover. I made those components system-grade: rebuilt on tokens, named consistently and documented.
+
+## Architecture: three tiers
+
+![FY25 token architecture: Primitives, Semantic and Component tiers](/case-studies/fy25/architecture.svg)
+
+Primitives hold raw values, semantic tokens name roles in light and dark modes, and component tokens apply those roles to specific components. Each tier references the one before it, so a brand color change is made once and reaches every component. That replaces the FY23 replacement maps.
+
+{/* TODO: screenshot of the FY25 variable collections panel with the tier counts, and one component switching between light and dark modes */}
+
+## Diagnosis: semantic tokens that weren't semantic
+
+Auditing our own system, I found that many semantic tokens only repeated a primitive's path instead of naming a role. Tokens under `surface/brand/*` pointed to a color family and scale step, so the name changed nothing: switching the brand color would still mean renaming tokens. The `text/*` group got it right, because each token named a job.
+
+**The rule I set:** a semantic name describes a role, context or state, never a hue or a scale number. A primitive answers "what is this value?" A semantic token answers "where does it go?"
+
+**Token sprawl.** The semantic and component tiers grew larger than the system needs, because tokens were added without a shared rule for when a new one is justified. I'm treating this as a governance gap: naming rules and a review step before a token is added, then a rename and cleanup pass, using `text/*` as the model.
+
+**Brand guide drift.** The same audit found values in Epicor's brand guidelines that no longer matched the Figma primitives. The fix comes in order: clean up the semantic layer first, then reconcile the brand guide against it.
+
+{/* TODO: before and after of one token name, a primitive-path alias next to its role-based rename */}
+
+## Components, documentation and AI tooling
+
+The system ships 42 components, each built on tokens and documented, so anyone at Epicor can assemble a mockup in Figma without starting from zero.
+
+- **Documentation generated from the system.** Using Figma MCP with Claude, I generated documentation frames for color, gradients, breakpoints and typography directly from the variables. Unlike the FY23 hex labels, the docs can be regenerated whenever a value changes.
+- **Usage guidelines for the AI workflow.** I led a pilot of Figma MCP + Claude and wrote the guidelines for using it.
+- **One home for the docs.** I decided to host brand guidelines, live Figma component embeds and tokens on a single page inside the existing CMS, instead of maintaining a separate site.
+
+{/* TODO: a documentation frame generated with Figma MCP */}
+
+## Outcome and adoption
+
+Epicor.com runs on FY25, apart from custom pages such as the Insights event sites. Typography, type sizes, border radius and padding carried through to production. Color did not: the live site uses different values from the Figma tokens.
+
+Inside the design team, the component library replaced building screens from scratch: mockups are now assembled from FY25 components.
+
+## What I'd do differently: the design-to-code handoff
+
+The tokens stopped at Figma. An external agency migrated Epicor's site to a new version of Optimizely and built it with Tailwind under its own naming, so our token names never reached the code. Spacing and radius, which already followed Tailwind's scales, came through intact. The brand colors, which needed custom names, did not.
+
+Next time I would treat the token file as a deliverable, not a Figma feature:
+
+1. Export the tokens from Figma as a JSON file in a standard format.
+2. Generate the Tailwind theme and CSS variables from that file with a build step, so code and design read the same source.
+3. Make the generated theme part of what any agency receives and must use.
+
+This is the gap I want to close in my next role: design decisions that reach production unchanged.

@@ -19,7 +19,7 @@ export default function Navbar({ links }: Props){
                     Max López
                 </p>
                 <p className="text-base">
-                    UX Engineer
+                    Design Engineer
                 </p>
             </div>
         </NavLink>

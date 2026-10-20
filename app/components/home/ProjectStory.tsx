@@ -65,8 +65,8 @@ export default function ProjectStory({ project, index, total, next }: Props) {
       style={{ ["--beats" as string]: beats.length }}
       className="relative h-[calc(100svh_+_var(--beats)_*_30svh)] md:h-[calc(100vh_+_var(--beats)_*_45vh)]"
     >
-      <div className="sticky top-0 flex h-[100svh] items-center">
-        <div className="mx-auto w-full max-w-[1440px] px-6 pb-6 pt-20 sm:px-16 md:grid md:grid-cols-[minmax(0,440px)_minmax(0,1fr)] md:gap-x-16 md:px-24 md:pb-0 md:pt-16">
+      <div className="sticky top-0 flex h-[100svh] items-start">
+        <div className="mx-auto w-full max-w-[1440px] px-6 pb-6 pt-20 sm:px-16 md:grid md:grid-cols-[minmax(0,440px)_minmax(0,1fr)] md:gap-x-16 md:px-24 md:pb-0 md:pt-24">
           {/* Header */}
           <header className={`${reveal} md:col-start-1 md:row-start-1 md:self-end`}>
             <p className="font-mono text-xs uppercase tracking-wider text-[#48BDFF]">

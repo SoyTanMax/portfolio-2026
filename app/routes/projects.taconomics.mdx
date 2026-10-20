@@ -1,6 +1,8 @@
 ---
-title: Taconomics
-description: A freelance UX/UI consulting and design project.
+meta:
+  - title: "Taconomics · Max López"
+  - name: description
+    content: "Freelance UX/UI design and branding for Taconomics, an NFT marketplace for Latino artists: requirements, user flows, components and a brand built around a smiling taco."
 ---
 
 import Summary from "~/components/case/Summary";
@@ -8,9 +10,8 @@ import Summary from "~/components/case/Summary";
 ![Banner](https://i.ibb.co/8XXzhWj/Group-132-3.png)
 
 # Taconomics
-#### [Figma Designs](https://www.figma.com/file/y96pH1TaTI9S2bjV54AhGm/Taconomics?type=design&node-id=1501-2&mode=design&t=GGJ9gdK2tvqXDCZR-0) | [Deployed site](https://beta.taconomics.com/)
 
-### A freelance UX/UI consulting and design project.
+### Freelance UX/UI design and branding for an NFT marketplace.
 
 <Summary
   role="Freelance UX/UI designer: requirements with the founder, user flows, UI and branding."
@@ -18,110 +19,100 @@ import Summary from "~/components/case/Summary";
   decision="Buying $TACO and staking $Salsa on one page with a switch, since collectors need both to buy art."
 />
 
-## About Taconomics
-Taconomics is meant to be a decentralized application (DApp) that seeks to create a launchpad so that latino artists can make themselves known through their digital art. In other words, it's an NFT art gallery where all the art exposed is in some way related to Tacos, since $TACO is the cryptocurrency used in this platform.
+#### [Figma Designs](https://www.figma.com/file/y96pH1TaTI9S2bjV54AhGm/Taconomics?type=design&node-id=1501-2&mode=design&t=GGJ9gdK2tvqXDCZR-0)
 
-## Platform's requirements
-After talking to the client, who is the responsable and founder of Taconomics, I got a pretty good notion of what we needed to build. This notion arose from listing the requirements of the product, including its functional and non functional properties. Generally speaking, Taconomics needed to be a web application that allowed the user to:
-# 
-* Explore and buy different digital art pieces.
-* See the purchased pieces.
-* Buy $TACO.
-* Stake $Salsa (an alternative cryptocurrency used to buy unique art pieces) and obtain Lemons(the platform's main currency to buy art).
-* Know more about the whole project and get information about the smart contracts.
-* Communicate with the Taconomics team so people could enroll themselves as artists.
+## The product
 
-But that was not everything, because the platform was needed to built for artists too, so they could:
-#
-* Create their collections.
-* Post their art.
-* And claim their earnings from the NFTs sold.
+Taconomics is a decentralized app (DApp): a launchpad where Latino artists can make their digital art known. In practice, it's an NFT gallery where every piece is related to tacos, and $TACO is the platform's cryptocurrency.
 
-## User profiles
+## Requirements
 
-With that being said, I could get the answer to a very important question: **"Who are we building this site for?"**
-#
-Basically, there were 3 main user profiles that will use the platform:
-#
-* Collectors: people interested in buying digital art.
-* Artists: people that want to publish and sell their art.
-* Administrators: people that have permissions to edit the site's content.
-* These types of users need to connect a wallet on the Ethereum network via Metamask to access all the functions of the platform. The last type of user is the one who is only "visiting" the platform and has permissions limited to read-only.
+I started by listing the product's functional and non-functional requirements with the founder. Collectors needed to:
 
-## The site's architecture & User flow
+- Explore and buy digital art.
+- See the pieces they bought.
+- Buy $TACO.
+- Stake $Salsa, a second currency, to earn Lemons, the main currency for buying art.
+- Learn about the project and its smart contracts.
+- Contact the team to apply as an artist.
 
-Taking into account the different user types and the platform requirements, I came up with the platform's general user flow:
+Artists needed to:
+
+- Create collections.
+- Post their art.
+- Claim their earnings from NFTs sold.
+
+## Who it's for
+
+Three user profiles came out of the requirements:
+
+- **Collectors**: people who buy digital art.
+- **Artists**: people who publish and sell their art.
+- **Administrators**: people who edit the site's content.
+
+All three connect an Ethereum wallet through Metamask. Visitors without a wallet can only browse.
+
+## User flow and wireframes
+
+From the profiles and requirements, I mapped the platform's general user flow, then wireframed the main screens.
 
 ![User flow](https://i.ibb.co/tmHBFgc/user-flow.png)
 
-## Wireframing
 ![Wireframes1](https://i.ibb.co/02mznMX/wireframes.png)
 ![Wireframes2](https://i.ibb.co/PY1RgR8/wireframes2.png)
 ![Wireframes3](https://i.ibb.co/dgZgFdm/wireframes3.png)
 ![Wireframes4](https://i.ibb.co/sqgd5qq/wireframes4.png)
 
-## Main components
+## Key decisions
 
-**The slider**
+### A slider for the two main actions
 
-Originally, I proposed a simple hero page with a heading, an image, and a call-to-action button, but the client suggested a slider with the main actions that you can take in the platform and I thought it was a great idea so we went with it. The slider consisted in two slides, one for buying and the other one for selling art. These slides were meant to contain custom graphics for Taconomics, graphics which we will see later on the Style Guide section.
+I first proposed a simple hero: heading, image and a call to action. The founder suggested a slider with the platform's main actions instead, and it was the better idea. It has two slides: one for buying art, one for selling it, each with custom illustrations.
 
 ![Slider](https://i.ibb.co/KyjrVYW/slider.png)
 
-**Card component**
+### Cards that reveal the artist
 
-This component is meant to change state when hovered on to see a description of the artist and a link to see its collection in full detail.
+On hover, an art card shows a description of the artist and a link to their full collection.
 
 ![Card](https://i.ibb.co/4YkDbH6/card.png)
-#
-#
-**Buy $TACO / Stake $Salsa Component**
-#
-The client and I decided to put these components together in the same page because they are very related talking about functionality, because without $TACO and $Salsa you can not buy art on the platform. In order to change from one component to another smoothly I suggested a switch view.
-#
-The first component consists in a simple swap component that you can find in most of the cryptocurrency sites where you can buy of swap cryptos.
-#
-The second component is a little bit more complex, given that there are two ways in which you can make Salsa: the multi-asset or the single-asset way. In the first one, you use $TACO and WETH to create $Salsa, and in the second one you select either $TACO or WETH to make $SALSA.
-#
-To select either the multi-asset or the single asset way I suggested a select button so as not to spam the switch component. Once you select the multi-asset way, you have to choose again between $TACO and WETH, so I went with option buttons but designed in a way that doesn't feel like an option button.
-#
+
+### Buy $TACO and stake $Salsa on one page
+
+Collectors can't buy art without $TACO and $Salsa, so the founder and I put both on the same page, with a switch between them.
+
+- **Buy $TACO** is a standard swap, like most crypto sites.
+- **Stake $Salsa** is more complex. Salsa can be made two ways: multi-asset, with $TACO and WETH together, or single-asset, with either one.
+
+A select chooses between multi-asset and single-asset, so the switch isn't overloaded. In single-asset mode, the choice between $TACO and WETH uses option buttons designed not to look like option buttons: the selected token sits in a card.
+
 ![Buy](https://i.ibb.co/brpTk1L/buy.png)
 
-## Style Guide
+## Brand
 
-Since the begging the client mentioned that Taconomics needed a logo and a little bit of branding and I was delighted to work on it. At first, I suggested going with a 3d-like concept that has become very popular since last year but the client said he had a more of a flat style in mind.
-#
-**Choosing the typography**
-#
-For me the typography you use in a product is a very important aspect of the design (and should for every company) because it helps a ton to build the product's image. Since we were building something flat and not that serious, I suggested 5 different fonts for the client to choose (it could be one or two).
+The founder wanted a logo and some branding. I suggested a 3D style; he wanted something flat, so we went flat.
 
-Most of the designs contain Nunito, the Monserrat font was used very subtly in some UI elements.
+### Typography
+
+I gave the founder five font options that fit something flat and not too serious. The designs use Nunito, with Montserrat in a few UI elements.
 
 ![Fonts](https://i.ibb.co/VgSJH7n/fonts.png)
 
-**Designing the Logo**
-#
-For some reason, I couldn't picture anything but a Taco with a smile, so I did my best to meet the client's requirements. The design is also very cohesive with the chosen typography.
+### Logo
 
-Fun fact / Note: In Mexico, it's very common to go to a Taco stand and when you are offered salsa, they put it in a bottle similar to the 'i' in Taconomics, that's why it looks like that.
+A taco with a smile. The "i" is shaped like the salsa bottles at Mexican taco stands.
 
 ![Logo](https://i.ibb.co/B28WLgf/Group-184-1.jpg)
 
-**SVG Assets**
+### Illustrations, color and components
 
-These handcrafted svg designs were created exclusively for the platform.
+Custom SVG illustrations made for the platform, the color palette, and the UI components.
 
 ![SVGs](https://i.ibb.co/JcNvSjK/Group-185.jpg)
-
-**Color Palette**
-
 ![Palette](https://i.ibb.co/frhf0Vy/pallete.png)
+![Components](https://i.ibb.co/wdqzpgt/components.png)
 
-**UI Components**
-
-![Palette](https://i.ibb.co/wdqzpgt/components.png)
-
-**Final Designs**
+## Final designs
 
 ![FD](https://i.ibb.co/CK5N4Nt/fd.png)
 ![FD2](https://i.ibb.co/VY6dR9m/fd2.png)

@@ -23,8 +23,11 @@ that audience: product decisions first, then how they were built.
 ## Case studies
 
 - `projects.web-menu-redesign.mdx` — Pide Directo.
-- `projects.pos-redesign.mdx`, `projects.taconomics.mdx`, `projects.persona-lamps.mdx`,
-  `projects.cemex.mdx` — older cases.
+- `projects.pos-redesign.mdx` — Pide Directo POS, Version 1 (solo design + React, 2 weeks) and Version 2
+  checkout (solo design, frontend implemented with help). Both shipped.
+- `projects.cemex.mdx` — CEMEX Vertua. Max's role: UX Researcher and UX/UI Designer.
+- `projects.taconomics.mdx`, `projects.persona-lamps.mdx` — older freelance/Web3 cases.
+  Persona Lamps is archived (listed under "More work", not a home card).
 
 ## Drafts (unpublished)
 

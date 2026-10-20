@@ -45,7 +45,7 @@ export const projects: Project[] = [
         {
           label: "What it is",
           body: "The web menu where restaurant customers order directly, without an app.",
-          visual: { type: "image", src: "/home/web-menu/1-menu.webp", alt: "Three phone screens of the web menu: branch selection and a restaurant menu" },
+          visual: { type: "image", src: "/home/web-menu/1-menu.webp", alt: "Three phone screens of the web menu: branch selection, the menu and the menu scrolled" },
         },
         {
           label: "The problem",
@@ -55,12 +55,12 @@ export const projects: Project[] = [
         {
           label: "What I did",
           body: "Led the team that redesigned and rebuilt it in React. Sign-up moved inside checkout and only needs a phone number, verified by SMS.",
-          visual: { type: "image", src: "/home/web-menu/3-signup.webp", alt: "Cart and sign-up screens, with phone number verification by SMS" },
+          visual: { type: "image", src: "/home/web-menu/3-signup.webp", alt: "The order, the phone number step and the SMS verification code" },
         },
         {
           label: "Result",
           body: "Shipped as a mobile-first ordering flow, with live order status so customers know where their order is.",
-          visual: { type: "image", src: "/home/web-menu/4-status.webp", alt: "Order summary screens with the order status" },
+          visual: { type: "image", src: "/home/web-menu/4-status.webp", alt: "Order status steps and the order summary" },
         },
       ],
     },

@@ -36,7 +36,8 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      {/* Dark base so no white shows through while mobile browsers paint during scroll. */}
+      <body className="bg-[#07080B]">
         <Navbar links={links} />
         <Outlet />
         <ScrollRestoration />

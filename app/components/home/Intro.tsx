@@ -2,10 +2,11 @@
 export default function Intro() {
   return (
     <div className="relative">
-      {/* Decorative glow in the logo's blue, centered behind the headline */}
+      {/* Decorative glow in the logo's blue, centered behind the headline. A radial gradient instead of a
+          blur filter: large blurs are expensive on iOS Safari and made it skip painting while scrolling. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-56 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[#1A54E8] opacity-30 blur-[160px] md:h-[720px] md:w-[900px]"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[640px] bg-[radial-gradient(ellipse_60%_55%_at_50%_0%,rgba(26,84,232,0.32),transparent_70%)] md:h-[820px]"
       />
       <div className="relative mx-auto max-w-[1440px] px-6 pb-8 pt-32 sm:px-16 md:px-24 md:pb-10 md:pt-44">
         <div className="mx-auto flex max-w-[880px] flex-col items-center text-center">

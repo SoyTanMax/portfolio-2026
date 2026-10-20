@@ -2,8 +2,8 @@ import { Link } from "@remix-run/react";
 import { useEffect, useRef, useState } from "react";
 import type { Project, StoryVisual } from "~/types/Project";
 
-// How much scrolling (in viewport heights) each beat gets while the story is pinned.
-const SCROLL_PER_BEAT = 45;
+// How much scrolling each beat gets while the story is pinned: less on phones, where a swipe
+// covers fewer pixels and long pinned sections feel slow. Set in the className below.
 
 type Props = {
   project: Project & { story: NonNullable<Project["story"]> };
@@ -62,8 +62,8 @@ export default function ProjectStory({ project, index, total, next }: Props) {
       id={project.id}
       ref={sectionRef}
       aria-labelledby={titleId}
-      style={{ height: `${100 + beats.length * SCROLL_PER_BEAT}vh` }}
-      className="relative"
+      style={{ ["--beats" as string]: beats.length }}
+      className="relative h-[calc(100svh_+_var(--beats)_*_30svh)] md:h-[calc(100vh_+_var(--beats)_*_45vh)]"
     >
       <div className="sticky top-0 flex h-[100svh] items-center">
         <div className="mx-auto w-full max-w-[1440px] px-6 pb-6 pt-20 sm:px-16 md:grid md:grid-cols-[minmax(0,440px)_minmax(0,1fr)] md:gap-x-16 md:px-24 md:pb-0 md:pt-16">

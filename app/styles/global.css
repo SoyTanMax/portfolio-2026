@@ -13,19 +13,19 @@
     font-style: normal;
     font-display: swap;
 }
-/* Instrument Serif (headings): only a regular weight and its italic exist. */
+/* Clash Display (headings): Medium and Semibold. */
 @font-face {
-    font-family: "Instrument Serif";
-    src: url("/fonts/InstrumentSerif/InstrumentSerif-Regular.woff2") format("woff2");
-    font-weight: 400;
+    font-family: "Clash Display";
+    src: url("/fonts/ClashDisplay/ClashDisplay-Medium.woff2") format("woff2");
+    font-weight: 500;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
-    font-family: "Instrument Serif";
-    src: url("/fonts/InstrumentSerif/InstrumentSerif-Italic.woff2") format("woff2");
-    font-weight: 400;
-    font-style: italic;
+    font-family: "Clash Display";
+    src: url("/fonts/ClashDisplay/ClashDisplay-Semibold.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
     font-display: swap;
 }
 

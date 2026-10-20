@@ -1,22 +1,23 @@
-/* Case study typography. Scoped to .case so the navbar and components keep their own styles. */
+/* Case study typography: Clash Display headings, Geist text. Scoped to .case so the navbar and components keep their own styles. */
 
 .case h1 {
-    font-family: "Instrument Serif", ui-serif, Georgia, serif;
-    font-size: 48px;
+    font-family: "Clash Display", ui-sans-serif, system-ui, sans-serif;
+    font-size: 44px;
     line-height: 1.05;
+    letter-spacing: -0.01em;
     color: white;
-    font-weight: 400;
+    font-weight: 600;
     margin-top: 24px;
 }
 
 .case h2 {
-    font-family: "Instrument Serif", ui-serif, Georgia, serif;
+    font-family: "Clash Display", ui-sans-serif, system-ui, sans-serif;
     margin-top: 56px;
     margin-bottom: 12px;
-    font-size: 32px;
-    line-height: 1.15;
+    font-size: 28px;
+    line-height: 1.2;
     color: white;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .case h3 {

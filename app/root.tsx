@@ -18,7 +18,7 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: globalStylesUrl },
   // Preload the two faces every page renders first, so text doesn't flash in a fallback font.
   { rel: "preload", href: "/fonts/Geist/Geist-Variable.woff2", as: "font", type: "font/woff2", crossOrigin: "anonymous" },
-  { rel: "preload", href: "/fonts/InstrumentSerif/InstrumentSerif-Regular.woff2", as: "font", type: "font/woff2", crossOrigin: "anonymous" },
+  { rel: "preload", href: "/fonts/ClashDisplay/ClashDisplay-Semibold.woff2", as: "font", type: "font/woff2", crossOrigin: "anonymous" },
 ];
 
 export default function App() {

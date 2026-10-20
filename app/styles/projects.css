@@ -1,16 +1,17 @@
-/* Headings in Instrument Serif (single weight, so no bold); everything else stays in Geist. */
-h1 {
+/* Case study typography. Scoped to .case so the navbar and components keep their own styles. */
+
+.case h1 {
     font-family: "Instrument Serif", ui-serif, Georgia, serif;
     font-size: 48px;
     line-height: 1.05;
     color: white;
     font-weight: 400;
-    margin-top: 18px;
+    margin-top: 24px;
 }
 
-h2 {
+.case h2 {
     font-family: "Instrument Serif", ui-serif, Georgia, serif;
-    margin-top: 40px;
+    margin-top: 56px;
     margin-bottom: 12px;
     font-size: 32px;
     line-height: 1.15;
@@ -18,30 +19,24 @@ h2 {
     font-weight: 400;
 }
 
-h3 {
-    font-size: 18px;
+.case h3 {
+    font-size: 19px;
+    line-height: 1.35;
     color: white;
+    font-weight: 500;
+    margin-top: 28px;
+    margin-bottom: 8px;
+}
+
+/* The subtitle right under the title. */
+.case h1 + h3 {
+    margin-top: 12px;
     font-weight: 400;
-    margin-top: 12px;
+    color: rgb(255 255 255 / 0.75);
 }
 
-p {
-    color: white;
-}
-
-li {
-    color: white;
-    list-style-type: circle;
-}
-
-img{
-    margin-top: 12px;
-    margin-bottom: 12px;
-    border-radius: 12px;
-}
-
-h4 {
-    margin-top: 16px;
+.case h4 {
+    margin-top: 20px;
     font-family: "Geist Mono", ui-monospace, monospace;
     font-size: 12px;
     letter-spacing: 0.08em;
@@ -49,7 +44,42 @@ h4 {
     color: rgb(255 255 255 / 0.65);
 }
 
-h4 > a {
+.case h4 > a {
     color: rgb(168 85 247);
     text-decoration: underline;
+}
+
+.case p {
+    color: rgb(255 255 255 / 0.88);
+    font-size: 16px;
+    line-height: 1.65;
+    margin-bottom: 14px;
+}
+
+.case ul {
+    margin: 4px 0 18px;
+    padding-left: 22px;
+}
+
+.case li {
+    color: rgb(255 255 255 / 0.88);
+    line-height: 1.6;
+    margin-bottom: 8px;
+    list-style-type: circle;
+}
+
+.case strong {
+    color: white;
+    font-weight: 600;
+}
+
+.case img {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    border-radius: 12px;
+}
+
+.case a:not(h4 > a) {
+    text-decoration: underline;
+    text-underline-offset: 3px;
 }

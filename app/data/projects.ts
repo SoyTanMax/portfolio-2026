@@ -30,7 +30,7 @@ export const projects: Project[] = [
     {
         id: 'persona-lamps',
         title: 'Persona Lamps',
-        tagline: 'NFT drop landing page · Vue.js · 4,444 NFTs sold out',
+        tagline: 'NFT drop landing page · Design + Vue.js · 4,444 NFTs sold out',
         images: ['https://i.ibb.co/KhXK4MC/Group-564-1.png'],
         archived: true,
     },

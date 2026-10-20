@@ -8,7 +8,7 @@ export const links: LinksFunction = () => [
 export default function Project(){
     return (
         <div className='w-full min-h-screen h-fit bg-gradient-to-b from-black to-gray-800 py-[120px] px-[24px]'>
-            <div className='max-w-[768px] w-full mx-auto'>
+            <div className='case max-w-[768px] w-full mx-auto'>
                 <Outlet />
             </div>
         </div>

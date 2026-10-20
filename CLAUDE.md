@@ -27,7 +27,7 @@ that audience: product decisions first, then how they were built.
   checkout (solo design, frontend implemented with help). Both shipped.
 - `projects.cemex.mdx` — CEMEX Vertua. Max's role: UX Researcher and UX/UI Designer.
 - `projects.taconomics.mdx`, `projects.persona-lamps.mdx` — older freelance/Web3 cases.
-  Persona Lamps is archived (listed under "More work", not a home card).
+  Persona Lamps is archived (listed under "More work", not a home card); Max designed and built it (Vue.js).
 
 ## Drafts (unpublished)
 

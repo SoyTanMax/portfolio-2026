@@ -15,10 +15,10 @@ export default function Navbar({ links }: Props){
         <NavLink to="/" className="text-white flex gap-4 items-center">
             <Logo />
             <div>
-                <p className="font-semibold text-xl">
+                <p className="font-serif text-2xl leading-none">
                     Max López
                 </p>
-                <p className="text-base">
+                <p className="mt-1 font-mono text-xs uppercase tracking-wider text-white/75">
                     Design Engineer
                 </p>
             </div>

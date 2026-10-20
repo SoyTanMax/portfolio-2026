@@ -26,7 +26,7 @@ export default function ProjectsContainer(){
             </div>
             {archived.length > 0 && (
                 <div className='mt-10'>
-                    <h2 className='text-sm font-medium uppercase tracking-wide text-white/60'>More work</h2>
+                    <h2 className='font-mono text-xs uppercase tracking-wider text-white/60'>More work</h2>
                     <ul className='mt-3 divide-y divide-white/10 border-y border-white/10'>
                         {archived.map(project => (
                             <li key={project.id}>

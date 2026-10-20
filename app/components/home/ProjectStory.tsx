@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import type { Project, StoryVisual } from "~/types/Project";
 
 // How much scrolling (in viewport heights) each beat gets while the story is pinned.
-const SCROLL_PER_BEAT = 70;
+const SCROLL_PER_BEAT = 45;
 
 type Props = {
   project: Project & { story: NonNullable<Project["story"]> };
@@ -134,15 +134,29 @@ export default function ProjectStory({ project, index, total, next }: Props) {
               ))}
             </ol>
 
-            <div className="mt-6 flex items-center gap-1.5" aria-hidden>
-              {beats.map((beat, i) => (
-                <span
-                  key={beat.label}
-                  className={`h-[3px] rounded-full transition-all duration-300 ${
-                    i === active ? "w-8 bg-[#48BDFF]" : i < active ? "w-3 bg-[#48BDFF]" : "w-3 bg-white/20"
-                  }`}
-                />
-              ))}
+            <div className="mt-6 flex items-center gap-4">
+              <div className="flex items-center gap-1.5" aria-hidden>
+                {beats.map((beat, i) => (
+                  <span
+                    key={beat.label}
+                    className={`h-[3px] rounded-full transition-all duration-300 ${
+                      i === active ? "w-8 bg-[#48BDFF]" : i < active ? "w-3 bg-[#48BDFF]" : "w-3 bg-white/20"
+                    }`}
+                  />
+                ))}
+              </div>
+              {/* Scroll hint: tells people the story continues; gives way to the exits on the last beat. */}
+              <p
+                aria-hidden={active === last}
+                className={`flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-white/60 transition-opacity duration-300 ${
+                  active === last ? "opacity-0" : "opacity-100"
+                }`}
+              >
+                Keep scrolling
+                <span aria-hidden className="inline-block motion-safe:animate-bounce">
+                  ↓
+                </span>
+              </p>
             </div>
 
             {/* Exits: read the full case, or keep scrolling */}

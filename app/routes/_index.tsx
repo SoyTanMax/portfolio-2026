@@ -7,7 +7,7 @@ import { projects } from "~/data/projects";
 export const meta: V2_MetaFunction = () => {
   return [
     { title: "Max López - Design Engineer" },
-    { name: "description", content: "I am a Design Engineer passionate about creating user-friendly and intuitive experiences." },
+    { name: "description", content: "Max López, Design Engineer in Monterrey, Nuevo León. I design and build websites and apps, from the first concept to something people can actually use." },
     { name: "keywords", content: "UX/UI Designer, Front-end Developer, User Experience, User Interface, Web Design, Front-end Development" },
     { property: "og:image", content: "https://i.ibb.co/sb66ykM/Bookmark.png" },
   ];
@@ -18,8 +18,8 @@ const more = projects.filter((p) => p.archived);
 
 export default function Index() {
   return (
-    <main className="min-h-screen bg-[#07080B]">
-      <Intro projectCount={stories.length} />
+    <main className="min-h-screen overflow-x-clip bg-[#07080B]">
+      <Intro />
       {stories.map((project, i) => {
         const nextStory = stories[i + 1];
         return (

@@ -19,7 +19,7 @@ export const projects: Project[] = [
     {
         id: 'pos-redesign',
         title: 'Point of Sale (POS) Redesign',
-        images: ['https://i.ibb.co/yqgfjsc/Frame-25-5.png']
+        images: ['/case-studies/pos/card.webp']
     },
     {
         id: 'cemex',

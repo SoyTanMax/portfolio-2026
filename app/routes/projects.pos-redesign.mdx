@@ -1,62 +1,137 @@
-![Banner](https://i.ibb.co/7N5HKTq/Frame-29.png)
+---
+meta:
+  - title: "Pide Directo POS · Max López"
+  - name: description
+    content: "Two redesigns of a restaurant point of sale: a clearer order flow built in React in two weeks, then a checkout with active orders, flexible payments, tips, discounts and credits."
+---
 
-# Pide Directo's Point of Sale Redesing
-### A UX/UI Redesign and Web Development project.
+![Pide Directo POS banner](/case-studies/pos/cover.webp)
 
-## Background
-Pide Directo's point of sale (POS) application underwent a UX/UI redesign and web development project to address issues related to outdated visuals and usability challenges. The primary goals were to improve the aesthetics and graphics of the POS using UX/UI best practices and make the system responsive for a better user experience.
+# Pide Directo POS
 
-## Design Process
-Given the time constraints of the project, which allowed for a development timeline of just two weeks, extensive user research and analysis were not conducted. Instead, the focus was on upgrading the user interface (UI). The POS application primarily targeted individuals involved in restaurant sales and management.
+### A clearer order flow for restaurant staff. Designed and built in React in two weeks.
 
-## Design Enhancements
-To improve the UI, several design enhancements were implemented. The previous design relied heavily on solid lines to demarcate sections. In the redesign, these visual elements were removed, and a more subtle approach was adopted. By utilizing boxes and shadows, the division between different sections was clearly defined, creating a visually appealing and organized layout.
+**My role:** Version 1, sole designer and developer. Version 2, sole designer, with help implementing the frontend.
 
-One particular area of improvement was the order selection layout. The previous design lacked clarity, and users often found it confusing. A new layout was implemented that provided a clear and intuitive way to select the type of order, resulting in a more user-friendly experience.
+## Users and context
 
-Another challenge addressed was the differentiation between products and categories. The previous design struggled to convey this distinction effectively, with the left section of the screen dedicated to categories. Through thoughtful UI and layout modifications, the redesign ensured a clear differentiation between products and categories, enhancing overall usability.
+The POS is an internal tool for restaurant staff: cashiers, waiters and managers. They take orders, apply modifiers and charge customers.
 
-## Order Type Section
+It runs on phones, tablets and desktops. Most restaurants use a dedicated tablet for it.
 
-### Before
-![Before](https://i.ibb.co/mzQ2dv0/image-1-2.png)
+The old interface had layout problems: the main action on a screen wasn't always the most visible thing, categories took as much space as products, and heavy lines split every section.
 
-### After
-![After](https://i.ibb.co/Ph3nbwS/Pago-POS-3.png)
+## The flow
 
-## Menu Section
+An order goes through four steps. Two got a new layout; the other two got the new styles.
 
-### Before
-![Before](https://i.ibb.co/m4WBdQy/image-3-2.png)
+### 1. Order type
 
-### After
-![After](https://i.ibb.co/rt47HW1/Menu-POS.png)
+The old screen had a giant box on the right that only said "Select the order type", with the actual order types off to the side. The layout didn't prioritize the one action that mattered: choosing the type.
 
-## Modifiers Section
+The redesign makes choosing the order type the main action on the screen.
 
-### Before
-![Before](https://i.ibb.co/jT7RHZL/image-20.png)
+#### Before
+![Order type, before](/case-studies/pos/01-order-type-before.webp)
 
-### After
-![After](https://i.ibb.co/gg3wWw1/Menu-POS-1.png)
+#### After
+![Order type, after](/case-studies/pos/01-order-type-after.webp)
 
-## Payment Section
+### 2. Menu
 
-### Before
-![Before](https://i.ibb.co/F6JhPh0/image-18.png)
+Categories took up the left side of the screen and were as big as products, or bigger. That's the wrong hierarchy: products are what staff add to the order.
 
-### After
-![After](https://i.ibb.co/PxVHNd4/Pago-POS-2.png)
+The redesign moves categories above the products and makes them smaller. Products get the space and become the most important element on the screen.
 
-Additionally, as the previous version lacked responsiveness, efforts were made to design and develop a mobile version that appeared native and provided an optimal experience on mobile devices. The mobile design incorporated cards placed at the bottom of the system, improving navigation and ease of use.
-![Mobile Views](https://i.ibb.co/QdxdjNf/Group-126.png)
+#### Before
+![Menu, before](/case-studies/pos/02-menu-before.webp)
 
-## Web Development
-The web development phase of the project involved using React.js and vanilla CSS technologies. As the sole designer and developer involved in the process, the focus was primarily on implementing the UI improvements within the given timeline. The project did not encounter significant development challenges due to its UI-centric nature and the limited timeframe.
+#### After
+![Menu, after](/case-studies/pos/02-menu-after.webp)
 
-## Outcomes and Results
-The UX/UI redesign and web development project resulted in a visually improved POS application. While formal user testing was not conducted due to time constraints, feedback from the internal team was overwhelmingly positive. The upgraded UI was praised for its enhanced aesthetics and usability compared to the previous version.
+### 3. Modifiers
 
-Despite the absence of user feedback at this stage, the redesign successfully addressed the visual and usability issues, adhering to UX/UI best practices. The improved visuals, optimized layouts, and responsive design aimed to provide a more engaging and efficient user experience for individuals involved in restaurant sales and management.
+Here the change was mostly visual, to make the process less confusing. Each group of options has a clear title and its rule ("required", "max 1"). Options are cards with their price. What's been chosen collects in a summary panel on the right, with the button to add it to the order.
 
-Overall, the project demonstrated the ability to rapidly implement UX/UI improvements and develop a responsive POS application within a tight timeframe.
+#### Before
+![Modifiers, before](/case-studies/pos/03-modifiers-before.webp)
+
+#### After
+![Modifiers, after](/case-studies/pos/03-modifiers-after.webp)
+
+### 4. Payment
+
+Payment kept its structure: payment method, contact details, a keypad, and the total with the amount still missing. The work was making it consistent with the rest of the interface. Payment methods became buttons with icons, and the amount and the total are easier to read at a glance.
+
+#### Before
+![Payment, before](/case-studies/pos/04-payment-before.webp)
+
+#### After
+![Payment, after](/case-studies/pos/04-payment-after.webp)
+
+### Across the flow
+
+Heavy lines used to split every section. The redesign groups related content in boxes instead, so a dense screen reads as a few clear blocks.
+
+## Phone, tablet and desktop
+
+The old POS wasn't responsive. I designed and built it for every screen staff use: the dedicated tablet most restaurants have, desktop, and phone. The phone version feels native, with cards anchored to the bottom of the screen to make navigation easier.
+
+Waiters used it the most on phones, to take orders from their own phone in the restaurant.
+
+![Mobile views](/case-studies/pos/05-phone.webp)
+
+## Constraints as decisions
+
+The project was planned to fit two weeks of design and development, and it shipped complete.
+
+The goal wasn't a full redesign, because it had to ship fast. Order type and menu got new layouts, because their hierarchy was wrong. Modifiers and payment kept their structure and got the new styles. The whole flow now looks consistent.
+
+## Building it
+
+I built it in React with plain CSS. Its backend also powers the [Pide Directo web menu](/projects/web-menu-redesign), the customer-facing side of the same system.
+
+## What changed
+
+It shipped to every business using Pide Directo. Feedback from the internal team was very positive: they praised the new look and the usability. There was no formal testing with restaurant staff.
+
+## Version 2: checkout
+
+**My role:** I designed it alone and had help implementing the frontend. It shipped.
+
+Version 1 fixed the order flow. Charging needed more options: restaurants needed to save an order without charging it, apply credits and discounts, add tips, and take more payment methods. They also needed to see which orders were still open.
+
+### Active orders on the main screen
+
+The main screen now shows the orders that are still open, next to the order types. Each card shows the customer, the ticket, the table and the time since the order was placed, with the next action: assign a delivery driver, edit, or print the bill. The main screen started to look like an app.
+
+![Main screen with order types and pending orders](/case-studies/pos/06-v2-orders.webp)
+
+### Editing an order
+
+The order stays visible on the right while staff add products, with the subtotal and total, and two ways out: charge now or save without charging.
+
+![Editing an order](/case-studies/pos/07-v2-edit-order.webp)
+
+### A flexible checkout
+
+Paying became its own flow: payment method, amount, customer details, and a summary.
+
+- **More payment methods**: cash, card, US dollars, AMEX and other.
+- **Registered payments**: the amount still missing and the payments already registered stay visible at the bottom of every step.
+- **Everything checkout needs**: charge, save without charging, add a tip, add a discount, apply promotions or credits, and complete with an invoice.
+- **Summary always in view**: on tablet, the total, change and amount missing sit on the right while staff work through the steps.
+
+![Paying an order on tablet](/case-studies/pos/08-v2-pay-order.webp)
+
+On the phone, the same flow runs one step per screen.
+
+![Checkout on the phone: payment method, amount, customer details and summary](/case-studies/pos/09-v2-phone-checkout.webp)
+
+## What I'd measure
+
+- **Time per order**: from opening a new order to payment, at peak hours.
+- **Taps per order**: how many steps the most common orders take.
+- **Errors**: orders saved with the wrong type, missing or wrong modifiers, and voids.
+- **Learning time**: how long a new staff member takes to process orders without help.
+- **Checkout**: time from opening the payment to a closed order, and how often orders are saved without charging, split across payments, or get tips, discounts or credits.

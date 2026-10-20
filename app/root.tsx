@@ -23,7 +23,7 @@ export const links: LinksFunction = () => [
 
 export default function App() {
   const links = [
-    { id: 0, to: "/", label: "Home" },
+    { id: 0, to: "/", label: "Work" },
     { id: 1, to: "https://github.com/SoyTanMax", label: "Github" },
     { id: 2, to: "https://www.linkedin.com/in/max-lopez-dev/", label: "LinkedIn" },
   ];

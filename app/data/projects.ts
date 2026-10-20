@@ -1,37 +1,142 @@
 import type { Project } from "~/types/Project";
 
-// Order matters: the first non-archived project is the large featured card,
-// the next four fill the grid. Archived projects are listed under "More work".
+// Order matters: stories appear on the home page in this order.
+// Archived projects are listed under "More work".
 export const projects: Project[] = [
-    {
-        id: 'pos-redesign',
-        title: 'Pide Directo POS',
-        tagline: 'Internal tool for restaurant staff · Two redesigns · Design + React',
-        images: ['/case-studies/pos/card.webp'],
+  {
+    id: "pos-redesign",
+    title: "Pide Directo POS",
+    tagline: "Internal tool for restaurant staff · Two redesigns · Design + React",
+    story: {
+      eyebrow: "Internal tool · Design + React",
+      stage: "#DCF2E9",
+      beats: [
+        {
+          label: "What it is",
+          body: "The point of sale restaurant staff use to take orders and charge customers, on tablet, phone and desktop.",
+          visual: { type: "image", src: "/home/pos/1-orders.webp", alt: "Pide Directo POS start screen with order types and pending orders" },
+        },
+        {
+          label: "The problem",
+          body: "The main action on each screen wasn't the most visible thing. To start an order, staff faced a giant box that only said “Select the order type”.",
+          visual: { type: "image", src: "/home/pos/2-before.webp", alt: "The old order type screen, with a large empty box and small buttons to the side" },
+        },
+        {
+          label: "What I did",
+          body: "Redesigned the order flow and built it in React in two weeks. Then a second version: a checkout with saved orders, tips, discounts, credits and more payment methods.",
+          visual: { type: "image", src: "/home/pos/3-pay.webp", alt: "The redesigned checkout on tablet, with payment methods, keypad and order summary" },
+        },
+        {
+          label: "Result",
+          body: "Both versions shipped. Version 1 went to every business using Pide Directo.",
+          visual: { type: "image", src: "/home/pos/4-phones.webp", alt: "Four phone screens of the checkout: payment method, amount, customer details and summary", tight: true },
+        },
+      ],
     },
-    {
-        id: 'web-menu-redesign',
-        title: 'Pide Directo Web Menu',
-        tagline: 'Ordering funnel · Phone-only sign-up · Led design + React build',
-        images: ['https://i.ibb.co/fSKCpb5/Frame-7-3.png'],
+  },
+  {
+    id: "web-menu-redesign",
+    title: "Pide Directo Web Menu",
+    tagline: "Ordering funnel · Phone-only sign-up · Led design + React build",
+    story: {
+      eyebrow: "Ordering funnel · Led design + React",
+      stage: "#F1DCDA",
+      beats: [
+        {
+          label: "What it is",
+          body: "The web menu where restaurant customers order directly, without an app.",
+          visual: { type: "image", src: "/home/web-menu/1-menu.webp", alt: "Three phone screens of the web menu: branch selection and a restaurant menu" },
+        },
+        {
+          label: "The problem",
+          body: "Almost 90% of customers ordered from their phones, but the menu wasn't built for mobile. Signing up took an email, a phone number and an email confirmation.",
+          visual: { type: "stat", value: "~90%", label: "of orders came from phones" },
+        },
+        {
+          label: "What I did",
+          body: "Led the team that redesigned and rebuilt it in React. Sign-up moved inside checkout and only needs a phone number, verified by SMS.",
+          visual: { type: "image", src: "/home/web-menu/3-signup.webp", alt: "Cart and sign-up screens, with phone number verification by SMS" },
+        },
+        {
+          label: "Result",
+          body: "Shipped as a mobile-first ordering flow, with live order status so customers know where their order is.",
+          visual: { type: "image", src: "/home/web-menu/4-status.webp", alt: "Order summary screens with the order status" },
+        },
+      ],
     },
-    {
-        id: 'cemex',
-        title: 'CEMEX Vertua',
-        tagline: 'Lead generation site · UX Researcher + UX/UI Designer',
-        images: ['https://i.ibb.co/R23JPfN/Frame-28.png'],
+  },
+  {
+    id: "cemex",
+    title: "CEMEX Vertua",
+    tagline: "Lead generation site · UX Researcher + UX/UI Designer",
+    story: {
+      eyebrow: "Lead generation · UX Researcher + UX/UI Designer",
+      stage: "#DCE5F8",
+      beats: [
+        {
+          label: "What it is",
+          body: "A website to generate leads for Vertua, CEMEX's line of sustainable construction products.",
+          visual: { type: "image", src: "/home/cemex/1-site.webp", alt: "Three desktop pages of the Vertua website" },
+        },
+        {
+          label: "The problem",
+          body: "Two audiences with different needs: architects and designers looking for inspiration, engineers looking for technical details.",
+          visual: {
+            type: "split",
+            items: [
+              { title: "Creative users", body: "Architects and designers, looking for inspiration." },
+              { title: "Technical users", body: "Civil and structural engineers, looking for product details and tools." },
+            ],
+          },
+        },
+        {
+          label: "What I did",
+          body: "User research with personas and journeys, then one site with two paths: an inspiration search for creatives, product information and engineering tools for technical users.",
+          visual: { type: "image", src: "/home/cemex/3-paths.webp", alt: "Vertua pages for the creative and technical paths" },
+        },
+        {
+          label: "Result",
+          body: "A functional prototype of the Vertua website, within CEMEX's brand guidelines.",
+          visual: { type: "image", src: "/home/cemex/4-prototype.webp", alt: "More pages from the Vertua prototype" },
+        },
+      ],
     },
-    {
-        id: 'taconomics',
-        title: 'Taconomics',
-        tagline: 'Freelance · NFT marketplace · UX/UI + branding',
-        images: ['https://i.ibb.co/2yywKsw/Taconomics-1-1.png'],
+  },
+  {
+    id: "taconomics",
+    title: "Taconomics",
+    tagline: "Freelance · NFT marketplace · UX/UI + branding",
+    story: {
+      eyebrow: "Freelance · UX/UI + branding",
+      stage: "#FFEFD3",
+      beats: [
+        {
+          label: "What it is",
+          body: "An NFT marketplace where Latino artists sell digital art, all of it related to tacos.",
+          visual: { type: "image", src: "/home/taconomics/1-marketplace.webp", alt: "Taconomics home sliders for buying and selling art, on desktop and mobile" },
+        },
+        {
+          label: "The problem",
+          body: "Three kinds of users (collectors, artists and admins), two currencies needed to buy art, and no brand yet.",
+          visual: { type: "image", src: "/home/taconomics/2-flow.webp", alt: "The platform's user flow diagram" },
+        },
+        {
+          label: "What I did",
+          body: "Requirements with the founder, user flows, the UI, and a brand: a smiling taco logo, type, colors and illustrations.",
+          visual: { type: "image", src: "/home/taconomics/3-logo.webp", alt: "The Taconomics logo: a smiling taco above the wordmark" },
+        },
+        {
+          label: "Result",
+          body: "Designs and a brand for an NFT marketplace for Latino artists.",
+          visual: { type: "image", src: "/home/taconomics/4-designs.webp", alt: "Final collection page designs" },
+        },
+      ],
     },
-    {
-        id: 'persona-lamps',
-        title: 'Persona Lamps',
-        tagline: 'NFT drop landing page · Design + Vue.js · 4,444 NFTs sold out',
-        images: ['https://i.ibb.co/KhXK4MC/Group-564-1.png'],
-        archived: true,
-    },
-]
+  },
+  {
+    id: "persona-lamps",
+    title: "Persona Lamps",
+    tagline: "NFT drop landing page · Design + Vue.js · 4,444 NFTs sold out",
+    archived: true,
+  },
+];

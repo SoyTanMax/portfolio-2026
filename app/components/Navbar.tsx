@@ -29,8 +29,8 @@ export default function Navbar({ links }: Props){
           <NavLink
             key={link.to}
             to={link.to}
-            target="_blank" 
-            rel="noreferrer"
+            // Only external links open in a new tab.
+            {...(link.to.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
             className={`hover:text-white transition duration-200 ${
               location.pathname === link.to
                 ? "text-white font-bold border-b-2 border-purple-500"
@@ -54,7 +54,7 @@ export default function Navbar({ links }: Props){
           {!open && (
             <div className="flex flex-col items-center gap-8 mt-12">
               {links.map(link => (
-                <a key={link.id} href={link.to} target="_blank" rel="noreferrer">
+                <a key={link.id} href={link.to} {...(link.to.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}>
                   {link.label}
                 </a>
               ))}

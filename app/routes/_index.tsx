@@ -8,8 +8,14 @@ export const meta: V2_MetaFunction = () => {
   return [
     { title: "Max López - Design Engineer" },
     { name: "description", content: "Max López, Design Engineer in Monterrey, Nuevo León. I design and build websites and apps, from the first concept to something people can actually use." },
-    { name: "keywords", content: "UX/UI Designer, Front-end Developer, User Experience, User Interface, Web Design, Front-end Development" },
-    { property: "og:image", content: "https://i.ibb.co/sb66ykM/Bookmark.png" },
+    { property: "og:type", content: "website" },
+    { property: "og:title", content: "Max López - Design Engineer" },
+    { property: "og:description", content: "From idea to a working product. I design and build websites and apps, from the first concept to something people can actually use." },
+    { property: "og:url", content: "https://portfolio-2026-olive-one.vercel.app/" },
+    { property: "og:image", content: "https://portfolio-2026-olive-one.vercel.app/og/home.jpg" },
+    { property: "og:image:width", content: "1200" },
+    { property: "og:image:height", content: "630" },
+    { name: "twitter:card", content: "summary_large_image" },
   ];
 };
 

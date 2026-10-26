@@ -60,7 +60,7 @@ The replacement maps are the clearest symptom: without aliases, the system had n
 
 ## My role and how we split the work
 
-We split the work by layer. My teammate mapped every component already in production, so we knew what the system had to cover. I made those components system-grade: rebuilt on tokens, named consistently and documented.
+We didn't start from a blank page. We built the system from what was already live on Epicor.com. My teammate mapped every component in production, so we knew what the system had to cover. I rebuilt those components in Figma so they could be reused safely: every value bound to a token, the same property names across components, and documentation for each one.
 
 ## Architecture: three tiers
 
@@ -86,9 +86,35 @@ Auditing our own system, I found that many semantic tokens only repeated a primi
 
 ![Audit of real FY25 semantic tokens: names that describe a value next to names that describe a role](/case-studies/fy25/06-token-audit.webp)
 
-## Components, documentation and AI tooling
+## Components: rebuilt from production
 
-The system ships 42 components, each built on tokens and documented, so anyone at Epicor can assemble a mockup in Figma without starting from zero.
+The library covers the components Epicor.com already used: accordions, inputs, dropdowns, chips, cards, navigation, buttons and more. 42 components, with 1,124 variants across 97 component sets.
+
+- **Values are tokens, not typed numbers.** About 95% of the 8,143 color fills and strokes in the component pages are bound to variables. 13 components, including Accordion, Checkbox, Chip, Dropdown, Text Input and Text Area, are at 100%.
+- **A small property vocabulary.** Most variants are set by the same few properties, Color, Status and Breakpoint, so a new component works like the ones you already know.
+- **Breakpoints as variants.** Some components carry a variant per breakpoint, so designers with less experience can build pages from templates without making layout decisions.
+
+![A sample of FY25 components in their default state, from the Figma library](/case-studies/fy25/10-components.webp)
+
+### One component, end to end: the chip
+
+The chip shows how the three tiers meet in a single component. Its background, text, icon, padding, gap, radius and font size are all tokens. Each component token points to a semantic role, and each role to a primitive. Changing `color/neutral/100` updates every surface that uses it, including this chip, without touching the component.
+
+![Chip anatomy: every property bound to a component token, a semantic token and a primitive](/case-studies/fy25/11-chip-anatomy.webp)
+
+### Who builds with it
+
+The marketing and dev teams build Epicor.com pages in the CMS with the system. Before building a page, everyone sends a high-fidelity wireframe, assembled from FY25 components, to a stakeholder. The components are what that wireframe is made of, so the review is on real parts, not sketches.
+
+### A proposal: Button V2
+
+The button in production spans 3 sets and 64 variants, with about 10 colors. In my view, pages don't need that many. On my own, I built a V2: one set, 6 colors chosen by class (primary, secondary, tertiary), and a focused state that v1 doesn't have.
+
+V2 isn't implemented, and it's still in progress: its colors aren't fully bound to tokens yet, and some property values need cleanup before it could replace v1.
+
+![Button v1, in production, next to Button V2, a proposal that isn't implemented](/case-studies/fy25/12-button-v1-v2.webp)
+
+## Documentation and AI tooling
 
 - **Documentation generated from the system.** Using Figma MCP with Claude, I generated documentation frames for color, gradients, breakpoints and typography directly from the variables. Unlike the FY23 hex labels, the docs can be regenerated whenever a value changes.
 - **Usage guidelines for the AI workflow.** I led a pilot of Figma MCP + Claude and wrote the guidelines for using it.
@@ -102,7 +128,7 @@ The system ships 42 components, each built on tokens and documented, so anyone a
 
 Epicor.com runs on FY25, apart from custom pages such as the Insights event sites. Typography, type sizes, border radius and padding carried through to production. Color did not: the live site uses different values from the Figma tokens.
 
-Inside the design team, the component library replaced building screens from scratch: mockups are now assembled from FY25 components.
+The component library replaced building screens from scratch. The design, marketing and dev teams assemble mockups and CMS pages from FY25 components.
 
 ## What I'd do differently: the design-to-code handoff
 

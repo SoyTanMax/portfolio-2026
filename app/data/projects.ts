@@ -76,7 +76,7 @@ export const projects: Project[] = [
         {
           label: "What it is",
           body: "A website to generate leads for Vertua, CEMEX's line of sustainable construction products.",
-          visual: { type: "image", src: "/home/cemex/1-site.webp", alt: "Three desktop pages of the Vertua website" },
+          visual: { type: "image", src: "/home/cemex/1-site.webp", alt: "The Vertua landing page" },
         },
         {
           label: "The problem",
@@ -92,12 +92,12 @@ export const projects: Project[] = [
         {
           label: "What I did",
           body: "User research with personas and journeys, then one site with two paths: an inspiration search for creatives, product information and engineering tools for technical users.",
-          visual: { type: "image", src: "/home/cemex/3-paths.webp", alt: "Vertua pages for the creative and technical paths" },
+          visual: { type: "image", src: "/home/cemex/3-paths.webp", alt: "Inspiration for Architects and Tools for Engineers, side by side" },
         },
         {
           label: "Result",
           body: "A functional prototype of the Vertua website, within CEMEX's brand guidelines.",
-          visual: { type: "image", src: "/home/cemex/4-prototype.webp", alt: "More pages from the Vertua prototype" },
+          visual: { type: "image", src: "/home/cemex/4-prototype.webp", alt: "The case studies list and a project page" },
         },
       ],
     },

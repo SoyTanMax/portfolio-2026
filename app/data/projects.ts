@@ -128,7 +128,7 @@ export const projects: Project[] = [
         {
           label: "Result",
           body: "Designs and a brand for an NFT marketplace for Latino artists.",
-          visual: { type: "image", src: "/home/taconomics/4-designs.webp", alt: "Final collection page designs" },
+          visual: { type: "image", src: "/home/taconomics/4-designs.webp", alt: "An artist's collection page" },
         },
       ],
     },

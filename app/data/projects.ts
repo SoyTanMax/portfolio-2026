@@ -27,8 +27,13 @@ export const projects: Project[] = [
           visual: { type: "image", src: "/home/fy25/04-variable-collections.webp", alt: "The three FY25 variable collections with their counts" },
         },
         {
+          label: "Components",
+          body: "Rebuilt the 42 components already on epicor.com on those tokens: 1,124 variants, with about 95% of their colors bound to variables.",
+          visual: { type: "image", src: "/case-studies/fy25/10-components.webp", alt: "A sample of FY25 components in their default state", tight: true },
+        },
+        {
           label: "Result",
-          body: "42 components on the new tokens, in light and dark mode. Epicor.com runs on FY25, apart from custom pages.",
+          body: "The marketing and dev teams build CMS pages with FY25. Epicor.com runs on it, apart from custom pages.",
           visual: { type: "image", src: "/home/fy25/05-light-dark.webp", alt: "FY25 components in light and dark mode" },
         },
       ],

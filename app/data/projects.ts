@@ -4,6 +4,37 @@ import type { Project } from "~/types/Project";
 // Archived projects are listed under "More work".
 export const projects: Project[] = [
   {
+    id: "fy25-design-system",
+    title: "Epicor FY25 Design System",
+    tagline: "Design system · 3-tier tokens · 42 components",
+    story: {
+      eyebrow: "Design system · Tokens + components",
+      stage: "#D7E0E4",
+      beats: [
+        {
+          label: "What it is",
+          body: "The design system behind epicor.com: tokens with light and dark modes, and 42 components in Figma.",
+          visual: { type: "image", src: "/home/fy25/cover.webp", alt: "The Epicor FY25 style guide cover" },
+        },
+        {
+          label: "The problem",
+          body: "The FY23 library had flat color styles named by hue and no variables. Every brand change meant manual replacement maps, page by page.",
+          visual: { type: "image", src: "/home/fy25/01-fy23-color-styles.webp", alt: "FY23 color styles named by hue, with hex values typed as text" },
+        },
+        {
+          label: "What I did",
+          body: "Rebuilt it as three tiers of tokens: 168 primitives, 400 semantic and 520 component tokens. A brand change is made once and reaches every component.",
+          visual: { type: "image", src: "/home/fy25/04-variable-collections.webp", alt: "The three FY25 variable collections with their counts" },
+        },
+        {
+          label: "Result",
+          body: "42 components on the new tokens, in light and dark mode. Epicor.com runs on FY25, apart from custom pages.",
+          visual: { type: "image", src: "/home/fy25/05-light-dark.webp", alt: "FY25 components in light and dark mode" },
+        },
+      ],
+    },
+  },
+  {
     id: "pos-redesign",
     title: "Pide Directo POS",
     tagline: "Internal tool for restaurant staff · Two redesigns · Design + React",

@@ -22,6 +22,10 @@ that audience: product decisions first, then how they were built.
 
 ## Case studies
 
+- `projects.fy25-design-system.mdx` — Epicor FY25 design system (lead case): 3-tier tokens
+  (168 primitive / 400 semantic / 520 component, light + dark), 42 components. Figma files are
+  on Max's Epicor account (FY25-DESIGN-SYSTEM, FY23-Components). The 54-token "Blocks" collection is
+  intentionally left out of the case (it is just component combinations).
 - `projects.web-menu-redesign.mdx` — Pide Directo.
 - `projects.pos-redesign.mdx` — Pide Directo POS, Version 1 (solo design + React, 2 weeks) and Version 2
   checkout (solo design, frontend implemented with help). Both shipped.
@@ -29,24 +33,11 @@ that audience: product decisions first, then how they were built.
 - `projects.taconomics.mdx`, `projects.persona-lamps.mdx` — older freelance/Web3 cases.
   Persona Lamps is archived (listed under "More work", not a home card); Max designed and built it (Vue.js).
 
-## Drafts (unpublished)
+## Drafts
 
-`drafts/` sits outside `app/` and `public/`, so Remix builds no route for it and nothing in it
-is served. Note: the GitHub repo is public, so drafts are still readable there.
-
-- **Epicor FY25 Design System** — paused, not published.
-  - Case: `drafts/projects.fy25-design-system.mdx`. 3-tier token architecture
-    (168 primitive / 400 semantic / 520 component tokens), 42 components.
-  - Assets: `drafts/fy25-assets/` (`cover.svg`, `architecture.svg`).
-  - Missing: Figma screenshots, marked with `{/* TODO */}` in the MDX (4 places). Optimize them
-    and put them in `public/case-studies/fy25/` when resuming.
-  - To publish again:
-    1. Move the MDX back to `app/routes/projects.fy25-design-system.mdx`.
-    2. Move `drafts/fy25-assets/` back to `public/case-studies/fy25/` (the MDX and card reference
-       `/case-studies/fy25/...`).
-    3. Add the entry back at the top of `projects` in `app/data/projects.ts`:
-       `{ id: 'fy25-design-system', title: 'Epicor FY25 Design System', images: ['/case-studies/fy25/cover.svg'] }`
-    4. Run `npm run build`.
+None right now. A case can be kept unpublished in a `drafts/` folder at the repo root (outside
+`app/` and `public/`), so Remix builds no route for it. The GitHub repo is public, so drafts are
+still readable there.
 
 ## Content rules
 

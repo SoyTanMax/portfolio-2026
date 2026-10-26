@@ -3,13 +3,37 @@ meta:
   - title: "FY25 Design System · Max López"
   - name: description
     content: "Rebuilding Epicor's design library into a three-tier token system: 168 primitives, 400 semantic and 520 component tokens."
+  - property: og:type
+    content: article
+  - property: og:title
+    content: "FY25 Design System · Max López"
+  - property: og:description
+    content: "Rebuilding Epicor's design library into a three-tier token system: 168 primitives, 400 semantic and 520 component tokens."
+  - property: og:url
+    content: "https://portfolio-2026-olive-one.vercel.app/projects/fy25-design-system"
+  - property: og:image
+    content: "https://portfolio-2026-olive-one.vercel.app/og/fy25-design-system.jpg"
+  - property: og:image:width
+    content: "1200"
+  - property: og:image:height
+    content: "630"
+  - name: twitter:card
+    content: summary_large_image
 ---
 
-![FY25 Design System cover](/case-studies/fy25/cover.svg)
+import Summary from "~/components/case/Summary";
+
+![Epicor FY25 style guide](/case-studies/fy25/cover.webp)
 
 # Epicor FY25 Design System
 
 ### Token architecture for a global brand, from flat styles to a three-tier system.
+
+<Summary
+  role="UX/UI Designer. I owned the token architecture, component quality, naming and documentation, in a team of two designers."
+  outcome="168 primitive, 400 semantic and 520 component tokens with light and dark modes, and 42 components. Epicor.com runs on FY25, apart from custom pages."
+  decision="Replace flat color styles and manual replacement maps with tokens in three tiers, so a brand change is made once and reaches every component."
+/>
 
 I rebuilt Epicor's design library from about 33 flat color styles with no variables into a three-tier token system: 168 primitives, 400 semantic tokens and 520 component tokens, with light and dark modes. With one other designer, I shipped 42 components on top of it. Epicor.com now runs on the FY25 system, apart from custom pages such as the Insights event sites.
 
@@ -30,7 +54,9 @@ In FY23, changing a brand color meant building a manual replacement map and swap
 
 The replacement maps are the clearest symptom: without aliases, the system had no single place to make a change.
 
-{/* TODO: screenshot of the FY23 color styles page and one "Color Replacements" map */}
+![FY23 color styles: hue names, hex values typed as text](/case-studies/fy25/01-fy23-color-styles.webp)
+![FY23 gradient styles, several named after a placement](/case-studies/fy25/02-fy23-gradient-styles.webp)
+![An FY23 color replacement map: Teal becomes Petrol, Aqua becomes Jade/Aqua](/case-studies/fy25/03-fy23-color-replacements.webp)
 
 ## My role and how we split the work
 
@@ -42,7 +68,11 @@ We split the work by layer. My teammate mapped every component already in produc
 
 Primitives hold raw values, semantic tokens name roles in light and dark modes, and component tokens apply those roles to specific components. Each tier references the one before it, so a brand color change is made once and reaches every component. That replaces the FY23 replacement maps.
 
-{/* TODO: screenshot of the FY25 variable collections panel with the tier counts, and one component switching between light and dark modes */}
+![The three FY25 variable collections with their real counts and largest groups](/case-studies/fy25/04-variable-collections.webp)
+
+The same components, switching between light and dark modes through the semantic and component tokens:
+
+![FY25 components in light and dark mode](/case-studies/fy25/05-light-dark.webp)
 
 ## Diagnosis: semantic tokens that weren't semantic
 
@@ -54,7 +84,7 @@ Auditing our own system, I found that many semantic tokens only repeated a primi
 
 **Brand guide drift.** The same audit found values in Epicor's brand guidelines that no longer matched the Figma primitives. The fix comes in order: clean up the semantic layer first, then reconcile the brand guide against it.
 
-{/* TODO: before and after of one token name, a primitive-path alias next to its role-based rename */}
+![Audit of real FY25 semantic tokens: names that describe a value next to names that describe a role](/case-studies/fy25/06-token-audit.webp)
 
 ## Components, documentation and AI tooling
 
@@ -64,7 +94,9 @@ The system ships 42 components, each built on tokens and documented, so anyone a
 - **Usage guidelines for the AI workflow.** I led a pilot of Figma MCP + Claude and wrote the guidelines for using it.
 - **One home for the docs.** I decided to host brand guidelines, live Figma component embeds and tokens on a single page inside the existing CMS, instead of maintaining a separate site.
 
-{/* TODO: a documentation frame generated with Figma MCP */}
+![Variables documentation generated from the file with Figma MCP](/case-studies/fy25/07-docs-variables.webp)
+![Gradient styles documentation](/case-studies/fy25/08-docs-gradients.webp)
+![Spacing documentation](/case-studies/fy25/09-docs-spacing.webp)
 
 ## Outcome and adoption
 

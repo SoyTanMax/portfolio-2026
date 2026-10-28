@@ -23,12 +23,12 @@ export const projects: Project[] = [
         },
         {
           label: "What I did",
-          body: "Rebuilt it as three tiers of tokens: 168 primitives, 400 semantic and 520 component tokens. A brand change is made once and reaches every component.",
+          body: "Rebuilt it as three tiers of tokens, then audited and cut it down: 198 primitives, 137 semantic and 248 component tokens. A brand change is made once and reaches every component.",
           visual: { type: "image", src: "/home/fy25/04-variable-collections.webp", alt: "The three FY25 variable collections with their counts" },
         },
         {
           label: "Components",
-          body: "Rebuilt the 42 components already on epicor.com on those tokens: 1,124 variants, with about 95% of their colors bound to variables.",
+          body: "Rebuilt the 42 components already on epicor.com on those tokens: 1,124 variants, with about 95% of their colors bound to variables or styles.",
           visual: { type: "image", src: "/case-studies/fy25/10-components.webp", alt: "A sample of FY25 components in their default state", tight: true },
         },
         {

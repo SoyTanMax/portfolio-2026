@@ -2,13 +2,13 @@
 meta:
   - title: "FY25 Design System · Max López"
   - name: description
-    content: "Rebuilding Epicor's design library into a three-tier token system: 168 primitives, 400 semantic and 520 component tokens."
+    content: "Rebuilding Epicor's design library into a three-tier token system, then auditing and cutting it down: 198 primitives, 137 semantic and 248 component tokens."
   - property: og:type
     content: article
   - property: og:title
     content: "FY25 Design System · Max López"
   - property: og:description
-    content: "Rebuilding Epicor's design library into a three-tier token system: 168 primitives, 400 semantic and 520 component tokens."
+    content: "Rebuilding Epicor's design library into a three-tier token system, then auditing and cutting it down: 198 primitives, 137 semantic and 248 component tokens."
   - property: og:url
     content: "https://portfolio-2026-olive-one.vercel.app/projects/fy25-design-system"
   - property: og:image
@@ -31,15 +31,15 @@ import Summary from "~/components/case/Summary";
 
 <Summary
   role="UX/UI Designer. I owned the token architecture, component quality, naming and documentation, in a team of two designers."
-  outcome="168 primitive, 400 semantic and 520 component tokens with light and dark modes, and 42 components. Epicor.com runs on FY25, apart from custom pages."
+  outcome="198 primitive, 137 semantic and 248 component tokens with light and dark modes, and 42 components. Epicor.com runs on FY25, apart from custom pages."
   decision="Replace flat color styles and manual replacement maps with tokens in three tiers, so a brand change is made once and reaches every component."
 />
 
-I rebuilt Epicor's design library from about 33 flat color styles with no variables into a three-tier token system: 168 primitives, 400 semantic tokens and 520 component tokens, with light and dark modes. With one other designer, I shipped 42 components on top of it. Epicor.com now runs on the FY25 system, apart from custom pages such as the Insights event sites.
+I rebuilt Epicor's design library from about 33 flat color styles with no variables into a three-tier token system with light and dark modes. Then I audited it and cut it down: 198 primitives, 137 semantic tokens and 248 component tokens. With one other designer, I shipped 42 components on top of it. Epicor.com now runs on the FY25 system, apart from custom pages such as the Insights event sites.
 
 - **Role:** UX/UI Designer. I owned the token architecture, component quality, naming and documentation.
 - **Team:** two designers.
-- **Tools:** Figma variables, Figma MCP + Claude.
+- **Tools:** Figma variables and styles, Figma MCP + Claude.
 
 ## The problem: a library that couldn't change
 
@@ -66,31 +66,39 @@ We didn't start from a blank page. We built the system from what was already liv
 
 ![FY25 token architecture: Primitives, Semantic and Component tiers](/case-studies/fy25/architecture.svg)
 
-Primitives hold raw values, semantic tokens name roles in light and dark modes, and component tokens apply those roles to specific components. Each tier references the one before it, so a brand color change is made once and reaches every component. That replaces the FY23 replacement maps.
+Primitives hold raw values, semantic tokens name roles in light and dark modes, and component tokens exist only where a component needs its own value, such as a background that changes between light and dark. Each tier references the one before it, so a brand color change is made once and reaches every component. That replaces the FY23 replacement maps.
 
-![The three FY25 variable collections with their real counts and largest groups](/case-studies/fy25/04-variable-collections.webp)
+![The three FY25 variable collections after the cleanup, with their real counts and largest groups](/case-studies/fy25/04-variable-collections.webp)
 
 The same components, switching between light and dark modes through the semantic and component tokens:
 
 ![FY25 components in light and dark mode](/case-studies/fy25/05-light-dark.webp)
 
-## Diagnosis: semantic tokens that weren't semantic
+## Diagnosis and cleanup: semantic tokens that weren't semantic
 
 Auditing our own system, I found that many semantic tokens only repeated a primitive's path instead of naming a role. Tokens under `surface/brand/*` pointed to a color family and scale step, so the name changed nothing: switching the brand color would still mean renaming tokens. The `text/*` group got it right, because each token named a job.
 
 **The rule I set:** a semantic name describes a role, context or state, never a hue or a scale number. A primitive answers "what is this value?" A semantic token answers "where does it go?"
 
-**Token sprawl.** The semantic and component tiers grew larger than the system needs, because tokens were added without a shared rule for when a new one is justified. I'm treating this as a governance gap: naming rules and a review step before a token is added, then a rename and cleanup pass, using `text/*` as the model.
+**The cleanup.** I applied the rule to the whole file:
 
-**Brand guide drift.** The same audit found values in Epicor's brand guidelines that no longer matched the Figma primitives. The fix comes in order: clean up the semantic layer first, then reconcile the brand guide against it.
+- **263 semantic tokens deleted.** Their names only repeated a hue or a scale step. 400 became 137.
+- **272 component tokens removed.** They only forwarded a primitive's value. Layers now use the primitive or the semantic role directly. 520 became 248.
+- **Gradients moved from variables to styles.** A variable holds one color, so each gradient had been split into three to six loose variables. 16 color styles now hold each gradient whole, direction included.
+- **29 alpha primitives,** such as `color/neutral/0/alpha-20`, replaced transparent colors typed by hand.
+- **No more dependency on the old library** for color, radius and spacing. Those values now come from FY25 primitives.
 
-![Audit of real FY25 semantic tokens: names that describe a value next to names that describe a role](/case-studies/fy25/06-token-audit.webp)
+I ran the migration with Claude through the Figma MCP: scripts that re-pointed about 19,000 layer bindings, main components first and instance overrides after, without changing how anything looks.
+
+**Brand guide drift.** The same audit found values in Epicor's brand guidelines that no longer matched the Figma primitives. With the semantic layer clean, the next step is to reconcile the brand guide against it.
+
+![Before the cleanup: real FY25 semantic tokens whose names describe a value, next to names that describe a role](/case-studies/fy25/06-token-audit.webp)
 
 ## Components: rebuilt from production
 
 The library covers the components Epicor.com already used: accordions, inputs, dropdowns, chips, cards, navigation, buttons and more. 42 components, with 1,124 variants across 97 component sets.
 
-- **Values are tokens, not typed numbers.** About 95% of the 8,143 color fills and strokes in the component pages are bound to variables. 13 components, including Accordion, Checkbox, Chip, Dropdown, Text Input and Text Area, are at 100%.
+- **Values are tokens, not typed numbers.** About 95% of the 8,095 solid fills and strokes in the components are bound to variables or styles. 22 components, including Accordion, Checkbox, Chip, Dropdown, Text Input and Text Area, are at 100%.
 - **A small property vocabulary.** Most variants are set by the same few properties, Color, Status and Breakpoint, so a new component works like the ones you already know.
 - **Breakpoints as variants.** Some components carry a variant per breakpoint, so designers with less experience can build pages from templates without making layout decisions.
 
@@ -98,9 +106,9 @@ The library covers the components Epicor.com already used: accordions, inputs, d
 
 ### One component, end to end: the chip
 
-The chip shows how the three tiers meet in a single component. Its background, text, icon, padding, gap, radius and font size are all tokens. Each component token points to a semantic role, and each role to a primitive. Changing `color/neutral/100` updates every surface that uses it, including this chip, without touching the component.
+The chip shows how the tiers meet in one component after the cleanup. Every property is a token, but each uses only the tiers it needs. The background keeps a component token because it changes between light and dark. Text and radius go through a semantic role. Spacing uses the primitive scale directly.
 
-![Chip anatomy: every property bound to a component token, a semantic token and a primitive](/case-studies/fy25/11-chip-anatomy.webp)
+![Chip anatomy: each property bound to the tiers it needs, from component token to primitive](/case-studies/fy25/11-chip-anatomy.webp)
 
 ### Who builds with it
 

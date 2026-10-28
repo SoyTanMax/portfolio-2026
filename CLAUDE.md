@@ -23,7 +23,7 @@ that audience: product decisions first, then how they were built.
 ## Case studies
 
 - `projects.fy25-design-system.mdx` — Epicor FY25 design system (lead case): 3-tier tokens
-  (168 primitive / 400 semantic / 520 component, light + dark), 42 components. Figma files are
+  (198 primitive / 137 semantic / 248 component after the cleanup; were 168 / 400 / 520; light + dark), 42 components. Figma files are
   on Max's Epicor account (FY25-DESIGN-SYSTEM, FY23-Components). The 54-token "Blocks" collection is
   intentionally left out of the case (it is just component combinations).
 - `projects.web-menu-redesign.mdx` — Pide Directo.

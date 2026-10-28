@@ -25,21 +25,32 @@ export default function Navbar({ links }: Props){
         </NavLink>
       </div>
       <div className="hidden md:flex items-center space-x-4">
-        {links.map((link) => (
-          <NavLink
-            key={link.to}
-            to={link.to}
-            // Only external links open in a new tab.
-            {...(link.to.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
-            className={`hover:text-white transition duration-200 ${
-              location.pathname === link.to
-                ? "text-white font-bold border-b-2 border-purple-500"
-                : "text-slate-400"
-            }`}
-          >
-            {link.label}
-          </NavLink>
-        ))}
+        {links.map((link) =>
+          // External links are plain anchors: NavLink drops rel on absolute URLs.
+          link.to.startsWith("http") ? (
+            <a
+              key={link.to}
+              href={link.to}
+              target="_blank"
+              rel="noreferrer"
+              className="text-slate-400 hover:text-white transition duration-200"
+            >
+              {link.label}
+            </a>
+          ) : (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              className={`hover:text-white transition duration-200 ${
+                location.pathname === link.to
+                  ? "text-white font-bold border-b-2 border-purple-500"
+                  : "text-slate-400"
+              }`}
+            >
+              {link.label}
+            </NavLink>
+          )
+        )}
       </div>
       <div onClick={() => setOpen(prevOpen => !prevOpen)} className="flex md:hidden">
             <MenuIcon width={32} color={"white"} classes={"hover:cursor-pointer"} />

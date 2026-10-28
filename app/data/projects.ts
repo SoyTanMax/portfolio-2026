@@ -14,7 +14,7 @@ export const projects: Project[] = [
         {
           label: "What it is",
           body: "The design system behind epicor.com: tokens with light and dark modes, and 42 components in Figma.",
-          visual: { type: "image", src: "/home/fy25/cover.webp", alt: "The Epicor FY25 style guide cover" },
+          visual: { type: "image", src: "/home/fy25/cover.webp", alt: "Real FY25 components on a topographic background" },
         },
         {
           label: "The problem",

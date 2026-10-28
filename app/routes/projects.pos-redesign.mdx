@@ -30,7 +30,7 @@ import Summary from "~/components/case/Summary";
 ### A clearer order flow for restaurant staff. Designed and built in React in two weeks.
 
 <Summary
-  role="Version 1: sole designer and developer, built in React in two weeks. Version 2: sole designer, with help implementing the frontend."
+  role="Version 1: sole designer and developer. Version 2: sole designer, with help implementing the frontend."
   outcome="Both versions shipped. Version 1 went to every business using Pide Directo."
   decision="Fix the hierarchy of a dense order flow, then turn checkout into its own flow: save without charging, tips, discounts, credits and more payment methods."
 />
@@ -41,11 +41,9 @@ The POS is an internal tool for restaurant staff: cashiers, waiters and managers
 
 It runs on phones, tablets and desktops. Most restaurants use a dedicated tablet for it.
 
-The old interface had layout problems: the main action on a screen wasn't always the most visible thing, categories took as much space as products, and heavy lines split every section.
-
 ## The flow
 
-An order goes through four steps. Two got a new layout; the other two got the new styles.
+An order goes through four steps.
 
 ### 1. Order type
 
@@ -105,21 +103,17 @@ Waiters used it the most on phones, to take orders from their own phone in the r
 
 ## Constraints as decisions
 
-The project was planned to fit two weeks of design and development, and it shipped complete.
-
-The goal wasn't a full redesign, because it had to ship fast. Order type and menu got new layouts, because their hierarchy was wrong. Modifiers and payment kept their structure and got the new styles. The whole flow now looks consistent.
+It had to ship in two weeks, so it wasn't a full redesign. Order type and menu got new layouts, because their hierarchy was wrong. Modifiers and payment kept their structure and got the new styles, so the whole flow looks consistent. It shipped complete, on time.
 
 ## Building it
 
-I built it in React with plain CSS. Its backend also powers the [Pide Directo web menu](/projects/web-menu-redesign), the customer-facing side of the same system.
+React with plain CSS. Its backend also powers the [Pide Directo web menu](/projects/web-menu-redesign), the customer-facing side of the same system.
 
 ## What changed
 
-It shipped to every business using Pide Directo. Feedback from the internal team was very positive: they praised the new look and the usability. There was no formal testing with restaurant staff.
+Feedback from the internal team was very positive: they praised the new look and the usability. There was no formal testing with restaurant staff.
 
 ## Version 2: checkout
-
-**My role:** I designed it alone and had help implementing the frontend. It shipped.
 
 Version 1 fixed the order flow. Charging needed more options: restaurants needed to save an order without charging it, apply credits and discounts, add tips, and take more payment methods. They also needed to see which orders were still open.
 

@@ -84,7 +84,7 @@ Auditing our own system, I found that many semantic tokens only repeated a primi
 
 - **263 semantic tokens deleted.** Their names only repeated a hue or a scale step. 400 became 137.
 - **272 component tokens removed.** They only forwarded a primitive's value. Layers now use the primitive or the semantic role directly. 520 became 248.
-- **Gradients moved from variables to styles.** A variable holds one color, so each gradient had been split into three to six loose variables. 16 color styles now hold each gradient whole, direction included.
+- **Gradients moved from variables to styles.** A variable holds one color, so each gradient had been split into three to six loose variables. 18 color styles now hold each gradient whole, direction included.
 - **29 alpha primitives,** such as `color/neutral/0/alpha-20`, replaced transparent colors typed by hand.
 - **No more dependency on the old library** for color, radius and spacing. Those values now come from FY25 primitives.
 

@@ -35,38 +35,28 @@ import Summary from "~/components/case/Summary";
   decision="Replace flat color styles and manual replacement maps with tokens in three tiers, so a brand change is made once and reaches every component."
 />
 
-I rebuilt Epicor's design library from about 33 flat color styles with no variables into a three-tier token system with light and dark modes. Then I audited it and cut it down: 198 primitives, 137 semantic tokens and 248 component tokens. With one other designer, I shipped 42 components on top of it. Epicor.com now runs on the FY25 system, apart from custom pages such as the Insights event sites.
-
-- **Role:** UX/UI Designer. I owned the token architecture, component quality, naming and documentation.
-- **Team:** two designers.
-- **Tools:** Figma variables and styles, Figma MCP + Claude.
-
 ## The problem: a library that couldn't change
 
-In FY23, changing a brand color meant building a manual replacement map and swapping values by hand. The library had been built by an outside agency and used styles only, with no variables. An audit of the FY23 file showed why it couldn't scale:
+The FY23 library was built by an outside agency: about 33 color styles and no variables. An audit of the file showed why it couldn't scale:
 
 - **Colors named by hue,** such as Petrol, Watermelon, Mauve and Peach Light. Names said what a color looked like, never where to use it.
 - **Mixed naming logic.** "Green Link" and "Type/ Grey" sat next to hue names, so there was no rule a new designer could follow.
 - **Hex values typed as text** next to each swatch. Documentation drifted silently whenever a color changed.
 - **Gradients named after placements,** such as "Mast Head Fill" and "Hero Block Fill". Each style was locked to one component.
-- **Pages of color replacement maps** pairing old values with new ones ("Teal = Petrol"). Every brand update was manual, page by page.
+- **Pages of color replacement maps** pairing old values with new ones ("Teal = Petrol"). Every brand change was made by hand, page by page.
 - **Button variants duplicated by hand** for light and dark backgrounds, with "Disabled" and "Inactive" naming the same state.
 
-The replacement maps are the clearest symptom: without aliases, the system had no single place to make a change.
+Without aliases, the system had no single place to make a change.
 
 ![FY23 color styles: hue names, hex values typed as text](/case-studies/fy25/01-fy23-color-styles.webp)
 ![FY23 gradient styles, several named after a placement](/case-studies/fy25/02-fy23-gradient-styles.webp)
 ![An FY23 color replacement map: Teal becomes Petrol, Aqua becomes Jade/Aqua](/case-studies/fy25/03-fy23-color-replacements.webp)
 
-## My role and how we split the work
-
-We didn't start from a blank page. We built the system from what was already live on Epicor.com. My teammate mapped every component in production, so we knew what the system had to cover. I rebuilt those components in Figma so they could be reused safely: every value bound to a token, the same property names across components, and documentation for each one.
-
 ## Architecture: three tiers
 
 ![FY25 token architecture: Primitives, Semantic and Component tiers](/case-studies/fy25/architecture.svg)
 
-Primitives hold raw values, semantic tokens name roles in light and dark modes, and component tokens exist only where a component needs its own value, such as a background that changes between light and dark. Each tier references the one before it, so a brand color change is made once and reaches every component. That replaces the FY23 replacement maps.
+Primitives hold raw values, semantic tokens name roles in light and dark modes, and component tokens exist only where a component needs its own value. Each tier references the one before it, which replaces the FY23 replacement maps.
 
 ![The three FY25 variable collections after the cleanup, with their real counts and largest groups](/case-studies/fy25/04-variable-collections.webp)
 
@@ -76,14 +66,14 @@ The same components, switching between light and dark modes through the semantic
 
 ## Diagnosis and cleanup: semantic tokens that weren't semantic
 
-Auditing our own system, I found that many semantic tokens only repeated a primitive's path instead of naming a role. Tokens under `surface/brand/*` pointed to a color family and scale step, so the name changed nothing: switching the brand color would still mean renaming tokens. The `text/*` group got it right, because each token named a job.
+Auditing our own system, I found that many semantic tokens only repeated a primitive's path. Tokens under `surface/brand/*` named a color family and scale step, so switching the brand color would still mean renaming them. The `text/*` group got it right: each token named a job.
 
 **The rule I set:** a semantic name describes a role, context or state, never a hue or a scale number. A primitive answers "what is this value?" A semantic token answers "where does it go?"
 
 **The cleanup.** I applied the rule to the whole file:
 
-- **263 semantic tokens deleted.** Their names only repeated a hue or a scale step. 400 became 137.
-- **272 component tokens removed.** They only forwarded a primitive's value. Layers now use the primitive or the semantic role directly. 520 became 248.
+- **263 semantic tokens deleted,** from 400 to 137.
+- **272 component tokens removed,** from 520 to 248. They only forwarded a primitive's value, so layers now use the primitive or the semantic role directly.
 - **Gradients moved from variables to styles.** A variable holds one color, so each gradient had been split into three to six loose variables. 18 color styles now hold each gradient whole, direction included.
 - **29 alpha primitives,** such as `color/neutral/0/alpha-20`, replaced transparent colors typed by hand.
 - **No more dependency on the old library** for color, radius and spacing. Those values now come from FY25 primitives.
@@ -96,7 +86,7 @@ I ran the migration with Claude through the Figma MCP: scripts that re-pointed a
 
 ## Components: rebuilt from production
 
-The library covers the components Epicor.com already used: accordions, inputs, dropdowns, chips, cards, navigation, buttons and more. 42 components, with 1,124 variants across 97 component sets.
+We didn't start from a blank page. My teammate mapped every component live on Epicor.com, so we knew what the system had to cover. I rebuilt them in Figma on the tokens, with shared property names and documentation for each one: accordions, inputs, dropdowns, chips, cards, navigation, buttons and more, with 1,124 variants across 97 component sets.
 
 - **Values are tokens, not typed numbers.** About 95% of the 8,095 solid fills and strokes in the components are bound to variables or styles. 22 components, including Accordion, Checkbox, Chip, Dropdown, Text Input and Text Area, are at 100%.
 - **A small property vocabulary.** Most variants are set by the same few properties, Color, Status and Breakpoint, so a new component works like the ones you already know.
@@ -106,7 +96,7 @@ The library covers the components Epicor.com already used: accordions, inputs, d
 
 ### One component, end to end: the chip
 
-The chip shows how the tiers meet in one component after the cleanup. Every property is a token, but each uses only the tiers it needs. The background keeps a component token because it changes between light and dark. Text and radius go through a semantic role. Spacing uses the primitive scale directly.
+Every property of the chip is a token, but each uses only the tiers it needs.
 
 ![Chip anatomy: each property bound to the tiers it needs, from component token to primitive](/case-studies/fy25/11-chip-anatomy.webp)
 
@@ -134,9 +124,7 @@ V2 isn't implemented, and it's still in progress: its colors aren't fully bound 
 
 ## Outcome and adoption
 
-Epicor.com runs on FY25, apart from custom pages such as the Insights event sites. Typography, type sizes, border radius and padding carried through to production. Color did not: the live site uses different values from the Figma tokens.
-
-The component library replaced building screens from scratch. The design, marketing and dev teams assemble mockups and CMS pages from FY25 components.
+Epicor.com runs on FY25, apart from custom pages such as the Insights event sites. Typography, type sizes, border radius and padding carried through to production. Color did not: the live site uses different values from the Figma tokens. Inside the teams, the library replaced building screens from scratch.
 
 ## What I'd do differently: the design-to-code handoff
 

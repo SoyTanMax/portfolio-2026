@@ -27,6 +27,41 @@ export default function Project() {
   const [sections, setSections] = useState<Section[]>([]);
   const [active, setActive] = useState<string | null>(null);
   const [progress, setProgress] = useState(0);
+  const [viewer, setViewer] = useState<{ index: number; images: { src: string; alt: string }[] } | null>(null);
+  const openerRef = useRef<HTMLElement | null>(null);
+
+  // Image viewer: every case image opens full size on click or Enter.
+  useEffect(() => {
+    const root = caseRef.current;
+    if (!root) return;
+    const imgs = Array.from(root.querySelectorAll("img")) as HTMLImageElement[];
+    for (const img of imgs) {
+      img.setAttribute("data-zoomable", "");
+      img.tabIndex = 0;
+      img.setAttribute("role", "button");
+      img.setAttribute("aria-haspopup", "dialog");
+      img.setAttribute("aria-label", `View larger: ${img.alt}`);
+    }
+    const open = (img: HTMLImageElement) => {
+      openerRef.current = img;
+      setViewer({ index: imgs.indexOf(img), images: imgs.map((i) => ({ src: i.currentSrc || i.src, alt: i.alt })) });
+    };
+    const onClick = (e: MouseEvent) => {
+      if (e.target instanceof HTMLImageElement && imgs.includes(e.target)) open(e.target);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.key === "Enter" || e.key === " ") && e.target instanceof HTMLImageElement && imgs.includes(e.target)) {
+        e.preventDefault();
+        open(e.target);
+      }
+    };
+    root.addEventListener("click", onClick);
+    root.addEventListener("keydown", onKey);
+    return () => {
+      root.removeEventListener("click", onClick);
+      root.removeEventListener("keydown", onKey);
+    };
+  }, [pathname]);
 
   // Reveal on scroll: every top-level block of the case fades up the first time it's seen.
   useEffect(() => {
@@ -134,6 +169,124 @@ export default function Project() {
       <div ref={caseRef} className="case mx-auto w-full max-w-[768px]">
         <Outlet />
       </div>
+
+      {viewer && (
+        <ImageViewer
+          images={viewer.images}
+          index={viewer.index}
+          onIndex={(index) => setViewer({ ...viewer, index })}
+          onClose={() => {
+            setViewer(null);
+            openerRef.current?.focus();
+          }}
+        />
+      )}
     </div>
+  );
+}
+
+type ViewerProps = {
+  images: { src: string; alt: string }[];
+  index: number;
+  onIndex: (index: number) => void;
+  onClose: () => void;
+};
+
+/** Full-screen view of one case image. Tall images scroll; arrows move between the case's images. */
+function ImageViewer({ images, index, onIndex, onClose }: ViewerProps) {
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const image = images[index];
+  const many = images.length > 1;
+  const go = (step: number) => onIndex((index + step + images.length) % images.length);
+
+  useEffect(() => {
+    closeRef.current?.focus();
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, []);
+
+  useEffect(() => {
+    scrollRef.current?.scrollTo({ top: 0 });
+  }, [index]);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Tab") {
+        // Keep focus inside the viewer while it's open.
+        const focusable = Array.from(document.querySelectorAll<HTMLElement>('[role="dialog"] button')).filter((el) => el.getClientRects().length > 0);
+        const i = focusable.indexOf(document.activeElement as HTMLElement);
+        e.preventDefault();
+        focusable[(i + (e.shiftKey ? -1 : 1) + focusable.length) % focusable.length]?.focus();
+      } else if (e.key === "Escape") onClose();
+      else if (many && e.key === "ArrowRight") go(1);
+      else if (many && e.key === "ArrowLeft") go(-1);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  });
+
+  const control = "rounded-full bg-white/10 p-3 text-white transition hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#48BDFF]";
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={image.alt || "Image"}
+      className="fixed inset-0 z-50 flex flex-col bg-[#07080B] motion-safe:animate-[fadein_200ms_ease-out]"
+    >
+      <div className="flex items-center gap-4 px-4 py-3 sm:px-6">
+        {many && (
+          <p className="font-mono text-xs uppercase tracking-wider text-white/60">
+            {index + 1} / {images.length}
+          </p>
+        )}
+        <p className="min-w-0 flex-1 truncate text-sm text-white/80">{image.alt}</p>
+        <button ref={closeRef} type="button" onClick={onClose} aria-label="Close" className={control}>
+          <svg aria-hidden width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+            <path d="M3 3l10 10M13 3L3 13" />
+          </svg>
+        </button>
+      </div>
+
+      {/* Clicking the dark area around the image closes the viewer. */}
+      <div
+        ref={scrollRef}
+        className="relative flex-1 overflow-auto px-4 pb-6 sm:px-20"
+        onClick={(e) => {
+          if (!(e.target instanceof HTMLImageElement)) onClose();
+        }}
+      >
+        {/* Short images sit in the middle; tall ones start at the top and scroll. */}
+        <div className="flex min-h-full items-center justify-center">
+          <img src={image.src} alt={image.alt} className="block h-auto w-auto max-w-full rounded-xl" />
+        </div>
+      </div>
+
+      {many && (
+        <>
+          {/* Phones: arrows in a bar below the image. Larger screens: on the sides. */}
+          <div className="flex justify-center gap-4 pb-5 sm:hidden">
+            <ArrowButton dir="prev" onClick={() => go(-1)} className={control} />
+            <ArrowButton dir="next" onClick={() => go(1)} className={control} />
+          </div>
+          <ArrowButton dir="prev" onClick={() => go(-1)} className={`${control} fixed left-5 top-1/2 hidden -translate-y-1/2 sm:block`} />
+          <ArrowButton dir="next" onClick={() => go(1)} className={`${control} fixed right-5 top-1/2 hidden -translate-y-1/2 sm:block`} />
+        </>
+      )}
+    </div>
+  );
+}
+
+function ArrowButton({ dir, onClick, className }: { dir: "prev" | "next"; onClick: () => void; className: string }) {
+  return (
+    <button type="button" onClick={onClick} aria-label={dir === "prev" ? "Previous image" : "Next image"} className={className}>
+      <svg aria-hidden width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d={dir === "prev" ? "M10 3L5 8l5 5" : "M6 3l5 5-5 5"} />
+      </svg>
+    </button>
   );
 }

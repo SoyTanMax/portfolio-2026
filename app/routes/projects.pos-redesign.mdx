@@ -31,13 +31,15 @@ import Summary from "~/components/case/Summary";
 
 <Summary
   role="Version 1: sole designer and developer. Version 2: sole designer, with help implementing the frontend."
-  outcome="Both versions shipped. Version 1 went to every business using Pide Directo."
+  outcome="Both versions shipped, and Version 1 went to every business using Pide Directo. In October 2026, at least 22 restaurants in Mexico and Uruguay still run on it."
   decision="Fix the hierarchy of a dense order flow, then turn checkout into its own flow: save without charging, tips, discounts, credits and more payment methods."
 />
 
 ## Users and context
 
-The POS is an internal tool for restaurant staff: cashiers, waiters and managers. They take orders, apply modifiers and charge customers.
+Pide Directo makes software for restaurants, including this POS and its [web menu](/projects/web-menu-redesign). Its website lists 5,000 clients and a certification from Rappi as a Top Tech Partner.
+
+The POS is an internal tool for restaurant staff: cashiers, waiters and managers. Staff take orders, apply modifiers and charge customers. Managers also set up the restaurant's products and promotions there, and that setup feeds the web menu, so every restaurant ordering online runs on the POS too.
 
 It runs on phones, tablets and desktops. Most restaurants use a dedicated tablet for it.
 
@@ -97,7 +99,7 @@ Heavy lines used to split every section. The redesign groups related content in 
 
 The old POS wasn't responsive. I designed and built it for every screen staff use: the dedicated tablet most restaurants have, desktop, and phone. The phone version feels native, with cards anchored to the bottom of the screen to make navigation easier.
 
-Waiters used it the most on phones, to take orders from their own phone in the restaurant.
+The phone version was a feature request: waiters needed to take orders from their own phones in the restaurant.
 
 ![Mobile views](/case-studies/pos/05-phone.webp)
 
@@ -113,9 +115,13 @@ React with plain CSS. Its backend also powers the [Pide Directo web menu](/proje
 
 Feedback from the internal team was very positive: they praised the new look and the usability. There was no formal testing with restaurant staff.
 
+In October 2026 it's still in use: at least 22 restaurants in Mexico and Uruguay take online orders through Pide Directo, and every one of them manages its menu in the POS.
+
 ## Version 2: checkout
 
-Version 1 fixed the order flow. Charging needed more options: restaurants needed to save an order without charging it, apply credits and discounts, add tips, and take more payment methods. They also needed to see which orders were still open.
+Version 2 wasn't a single project. After Version 1, new features piled up as restaurants needed them: saving an order without charging it, credits and discounts, tips, more payment methods, and a view of the orders still open.
+
+The redesign was my initiative, not a request. I used those features as the chance to refresh the interface: each new feature came with a cleaner layout, and charging grew into its own flow.
 
 ### Active orders on the main screen
 
@@ -131,12 +137,13 @@ The order stays visible on the right while staff add products, with the subtotal
 
 ### A flexible checkout
 
-Paying became its own flow: payment method, amount, customer details, and a summary.
+Paying became its own flow: payment method, amount, customer details, and a summary. The Version 1 screen couldn't hold it anymore. There were too many payment methods to fit, and most charges need nearly all of that information, so it couldn't be hidden either. Splitting it into steps gave each part its own space.
 
 - **More payment methods**: cash, card, US dollars, AMEX and other.
 - **Registered payments**: the amount still missing and the payments already registered stay visible at the bottom of every step.
 - **Everything checkout needs**: charge, save without charging, add a tip, add a discount, apply promotions or credits, and complete with an invoice.
 - **Summary always in view**: on tablet, the total, change and amount missing sit on the right while staff work through the steps.
+- **System messages as toasts**: short notices that tell staff what to do next, such as "Completa el pago para agregar propina" (complete the payment to add a tip).
 
 ![Paying an order on tablet](/case-studies/pos/08-v2-pay-order.webp)
 

@@ -23,12 +23,12 @@ export const projects: Project[] = [
         },
         {
           label: "What I did",
-          body: "Redesigned the order flow and built it in React in two weeks. Then a second version: a checkout with saved orders, tips, discounts, credits and more payment methods.",
+          body: "Redesigned the order flow and built it in React in two weeks. Later, on my own initiative, I turned a run of new features into a second version: a checkout with saved orders, tips, discounts, credits and more payment methods.",
           visual: { type: "image", src: "/home/pos/3-pay.webp", alt: "The redesigned checkout on tablet, with payment methods, keypad and order summary" },
         },
         {
           label: "Result",
-          body: "Both versions shipped. Version 1 went to every business using Pide Directo.",
+          body: "Both versions shipped, and Version 1 went to every business using Pide Directo. In October 2026, at least 22 restaurants in Mexico and Uruguay still run on it.",
           visual: { type: "image", src: "/home/pos/4-phones.webp", alt: "Four phone screens of the checkout: payment method, amount, customer details and summary", tight: true },
         },
       ],
@@ -95,7 +95,7 @@ export const projects: Project[] = [
         },
         {
           label: "Result",
-          body: "Shipped as a mobile-first ordering flow, with live order status so customers know where their order is.",
+          body: "Shipped as a mobile-first ordering flow with live order status. In October 2026, at least 22 restaurants in Mexico and Uruguay still take orders through it.",
           visual: { type: "image", src: "/home/web-menu/4-status.webp", alt: "Order status steps and the order summary" },
         },
       ],

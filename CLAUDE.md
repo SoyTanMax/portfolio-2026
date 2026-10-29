@@ -10,7 +10,8 @@ that audience: product decisions first, then how they were built.
 
 - Remix 1.16 (v2 route convention) + MDX + Tailwind, deployed on Vercel (standard Remix build, no custom server).
 - Case studies are MDX routes: `app/routes/projects.<id>.mdx`.
-- The project list (cards, order) lives in `app/data/projects.ts`. Newest/featured goes first.
+- The project list (cards, order) lives in `app/data/projects.ts`. Order is deliberate: POS first (internal
+  tool, closest to the Revolut Platform role), then FY25. `public/og/home.jpg` says "5 projects"; update it if the count changes.
 - Case study styles: `app/styles/projects.css`.
 
 ## Technical notes

@@ -4,6 +4,37 @@ import type { Project } from "~/types/Project";
 // Archived projects are listed under "More work".
 export const projects: Project[] = [
   {
+    id: "pos-redesign",
+    title: "Pide Directo POS",
+    tagline: "Internal tool for restaurant staff · Two redesigns · Design + React",
+    story: {
+      eyebrow: "Internal tool · Design + React",
+      stage: "#DCF2E9",
+      beats: [
+        {
+          label: "What it is",
+          body: "The point of sale restaurant staff use to take orders and charge customers, on tablet, phone and desktop.",
+          visual: { type: "image", src: "/home/pos/1-orders.webp", alt: "Pide Directo POS start screen with order types and pending orders" },
+        },
+        {
+          label: "The problem",
+          body: "The main action on each screen wasn't the most visible thing. To start an order, staff faced a giant box that only said “Select the order type”.",
+          visual: { type: "image", src: "/home/pos/2-before.webp", alt: "The old order type screen, with a large empty box and small buttons to the side" },
+        },
+        {
+          label: "What I did",
+          body: "Redesigned the order flow and built it in React in two weeks. Then a second version: a checkout with saved orders, tips, discounts, credits and more payment methods.",
+          visual: { type: "image", src: "/home/pos/3-pay.webp", alt: "The redesigned checkout on tablet, with payment methods, keypad and order summary" },
+        },
+        {
+          label: "Result",
+          body: "Both versions shipped. Version 1 went to every business using Pide Directo.",
+          visual: { type: "image", src: "/home/pos/4-phones.webp", alt: "Four phone screens of the checkout: payment method, amount, customer details and summary", tight: true },
+        },
+      ],
+    },
+  },
+  {
     id: "fy25-design-system",
     title: "Epicor FY25 Design System",
     tagline: "Design system · 3-tier tokens · 42 components",
@@ -35,37 +66,6 @@ export const projects: Project[] = [
           label: "Result",
           body: "About 25 to 30 people build with FY25, and almost every page on Epicor.com runs on it. Building a page went from 2 to 3 days to under one day.",
           visual: { type: "stat", value: "<1 day", label: "to build a page, down from 2 to 3 days" },
-        },
-      ],
-    },
-  },
-  {
-    id: "pos-redesign",
-    title: "Pide Directo POS",
-    tagline: "Internal tool for restaurant staff · Two redesigns · Design + React",
-    story: {
-      eyebrow: "Internal tool · Design + React",
-      stage: "#DCF2E9",
-      beats: [
-        {
-          label: "What it is",
-          body: "The point of sale restaurant staff use to take orders and charge customers, on tablet, phone and desktop.",
-          visual: { type: "image", src: "/home/pos/1-orders.webp", alt: "Pide Directo POS start screen with order types and pending orders" },
-        },
-        {
-          label: "The problem",
-          body: "The main action on each screen wasn't the most visible thing. To start an order, staff faced a giant box that only said “Select the order type”.",
-          visual: { type: "image", src: "/home/pos/2-before.webp", alt: "The old order type screen, with a large empty box and small buttons to the side" },
-        },
-        {
-          label: "What I did",
-          body: "Redesigned the order flow and built it in React in two weeks. Then a second version: a checkout with saved orders, tips, discounts, credits and more payment methods.",
-          visual: { type: "image", src: "/home/pos/3-pay.webp", alt: "The redesigned checkout on tablet, with payment methods, keypad and order summary" },
-        },
-        {
-          label: "Result",
-          body: "Both versions shipped. Version 1 went to every business using Pide Directo.",
-          visual: { type: "image", src: "/home/pos/4-phones.webp", alt: "Four phone screens of the checkout: payment method, amount, customer details and summary", tight: true },
         },
       ],
     },

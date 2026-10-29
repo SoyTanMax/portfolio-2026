@@ -9,6 +9,7 @@ that audience: product decisions first, then how they were built.
 ## Stack
 
 - Remix 1.16 (v2 route convention) + MDX + Tailwind, deployed on Vercel (standard Remix build, no custom server).
+  Live at https://www.maxlopez.me (the apex redirects to www). Meta tags (og:url, og:image) use the www URL.
 - Case studies are MDX routes: `app/routes/projects.<id>.mdx`.
 - The project list (cards, order) lives in `app/data/projects.ts`. Order is deliberate: POS first (internal
   tool, closest to the Revolut Platform role), then FY25. `public/og/home.jpg` says "5 projects"; update it if the count changes.

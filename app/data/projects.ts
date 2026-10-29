@@ -33,8 +33,8 @@ export const projects: Project[] = [
         },
         {
           label: "Result",
-          body: "The marketing and dev teams build CMS pages with FY25. Epicor.com runs on it, apart from custom pages.",
-          visual: { type: "image", src: "/home/fy25/05-light-dark.webp", alt: "FY25 components in light and dark mode" },
+          body: "About 25 to 30 people build with FY25, and almost every page on Epicor.com runs on it. Building a page went from 2 to 3 days to under one day.",
+          visual: { type: "stat", value: "<1 day", label: "to build a page, down from 2 to 3 days" },
         },
       ],
     },

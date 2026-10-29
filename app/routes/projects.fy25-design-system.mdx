@@ -31,7 +31,7 @@ import Summary from "~/components/case/Summary";
 
 <Summary
   role="UX/UI Designer. I owned the token architecture, component quality, naming and documentation, in a team of two designers."
-  outcome="198 primitive, 137 semantic and 248 component tokens with light and dark modes, and 42 components. Epicor.com runs on FY25, apart from custom pages."
+  outcome="Building a page went from 2 to 3 days to under one day. About 25 to 30 people in marketing, design and dev build with its 42 components and 198 primitive, 137 semantic and 248 component tokens. Almost every page on Epicor.com runs on FY25."
   decision="Replace flat color styles and manual replacement maps with tokens in three tiers, so a brand change is made once and reaches every component."
 />
 
@@ -102,9 +102,12 @@ Every property of the chip is a token, but each uses only the tiers it needs.
 
 ![Chip anatomy: each property bound to the tiers it needs, from component token to primitive](/case-studies/fy25/11-chip-anatomy.webp)
 
-### Who builds with it
+### How it changed the work
 
-The marketing and dev teams build Epicor.com pages in the CMS with the system. Before building a page, everyone sends a high-fidelity wireframe, assembled from FY25 components, to a stakeholder. The components are what that wireframe is made of, so the review is on real parts, not sketches.
+About 25 to 30 people in marketing, design and dev build Epicor.com pages in the CMS with the system.
+
+- **Before:** stakeholders sent the content and the page was built straight away, with no mockup. They often disagreed with the result and asked for many changes, so a page took 2 to 3 days.
+- **After:** marketing assembles a high-fidelity mockup from FY25 components and sends it to the stakeholder before anything is built. The review happens on real parts, so pages bounce back less, and a page now takes under one day.
 
 ### A proposal: Button V2
 
@@ -126,16 +129,32 @@ V2 isn't implemented, and it's still in progress: its colors aren't fully bound 
 
 ## Outcome and adoption
 
-Epicor.com runs on FY25, apart from custom pages such as the Insights event sites. Typography, type sizes, border radius and padding carried through to production. Color did not: the live site uses different values from the Figma tokens. Inside the teams, the library replaced building screens from scratch.
+Almost every page on Epicor.com runs on FY25. The exceptions are custom pages such as the Insights event sites. Typography, type sizes, border radius and padding carried through to production. Color did not: the live site uses different values from the Figma tokens.
 
 ## What I'd do differently: the design-to-code handoff
 
 The tokens stopped at Figma. An external agency migrated Epicor's site to a new version of Optimizely and built it with Tailwind under its own naming, so our token names never reached the code. Spacing and radius, which already followed Tailwind's scales, came through intact. The brand colors, which needed custom names, did not.
 
-Next time I would treat the token file as a deliverable, not a Figma feature:
+So I built the handoff I'd give the next agency, from the real FY25 file:
 
-1. Export the tokens from Figma as a JSON file in a standard format.
-2. Generate the Tailwind theme and CSS variables from that file with a build step, so code and design read the same source.
-3. Make the generated theme part of what any agency receives and must use.
+1. **Export.** The three variable collections come out of Figma as files, with their light and dark values and their aliases.
+2. **Build.** A script with no dependencies turns them into W3C Design Tokens JSON, CSS variables for light and dark, and a Tailwind preset. Aliases stay aliases, so a primitive change still reaches every component.
+3. **Check.** The build fails if an alias points nowhere or two tokens collide. It caught one on the first run: `radius/none` existed as both a primitive and a semantic token. Variables now carry their tier: `--ref-*`, `--sys-*` and `--comp-*`.
+
+The chip from earlier, as code:
+
+```css
+:root {
+  --comp-chip-general-gray-bg-default: var(--ref-color-neutral-100);
+  --comp-chip-general-gray-text-default: var(--sys-text-secondary);
+}
+[data-theme="dark"] {
+  --comp-chip-general-gray-bg-default: var(--ref-color-petrol-400);
+}
+```
+
+In a browser, those resolve to the same values as in Figma: #EDF2F5 on light, #317D9B on dark. With the preset, a class like `bg-surface-secondary` switches with the mode on its own.
+
+It isn't in Epicor's production code; it's what the next build would start from. [See the tokens and the build script on GitHub](https://github.com/SoyTanMax/portfolio-2026/tree/main/design-tokens/fy25).
 
 This is the gap I want to close in my next role: design decisions that reach production unchanged.

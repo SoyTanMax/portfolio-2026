@@ -5,7 +5,8 @@
     "build": "remix build",
     "dev": "remix dev",
     "start": "remix-serve build",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "tokens": "node scripts/build-tokens.mjs"
   },
   "dependencies": {
     "@remix-run/css-bundle": "^1.16.0",

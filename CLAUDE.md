@@ -25,7 +25,10 @@ that audience: product decisions first, then how they were built.
 - `projects.fy25-design-system.mdx` — Epicor FY25 design system (lead case): 3-tier tokens
   (198 primitive / 137 semantic / 248 component after the cleanup; were 168 / 400 / 520; light + dark), 42 components. Figma files are
   on Max's Epicor account (FY25-DESIGN-SYSTEM, FY23-Components). The 54-token "Blocks" collection is
-  intentionally left out of the case (it is just component combinations).
+  intentionally left out of the case (it is just component combinations). Impact (from Max): about 25-30
+  people in marketing, design and dev use it; a page went from 2-3 days to under one day; almost every
+  page on Epicor.com runs on FY25. `design-tokens/fy25/` holds the Figma variable export and the built
+  DTCG JSON, CSS variables and Tailwind preset (`npm run tokens`); not used by Epicor's production code.
 - `projects.web-menu-redesign.mdx` — Pide Directo.
 - `projects.pos-redesign.mdx` — Pide Directo POS, Version 1 (solo design + React, 2 weeks) and Version 2
   checkout (solo design, frontend implemented with help). Both shipped.

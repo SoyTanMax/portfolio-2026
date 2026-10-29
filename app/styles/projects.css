@@ -95,6 +95,27 @@
     to { opacity: 1; }
 }
 
+.case pre {
+    margin: 16px 0 20px;
+    padding: 16px 20px;
+    overflow-x: auto;
+    border: 1px solid rgb(255 255 255 / 0.12);
+    border-radius: 12px;
+    background: rgb(255 255 255 / 0.04);
+    font-size: 13.5px;
+    line-height: 1.6;
+}
+
+.case code {
+    font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.9em;
+    color: rgb(255 255 255 / 0.9);
+}
+
+.case pre code {
+    font-size: inherit;
+}
+
 .case a:not(h4 > a) {
     text-decoration: underline;
     text-underline-offset: 3px;

@@ -1,13 +1,25 @@
 import { NavLink, useLocation } from "@remix-run/react";
 import Logo from "./Logo";
 import XMarkIcon from "~/icons/XMarkIcon";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import MenuIcon from "~/icons/MenuIcon";
 
 export default function Navbar({ links }: Props){
   const location = useLocation();
 
-  const [open, setOpen] = useState(true)
+  const [menuOpen, setMenuOpen] = useState(false);
+  const closeRef = useRef<HTMLButtonElement>(null);
+
+  // Mobile menu: focus the close button when it opens, close it with Escape.
+  useEffect(() => {
+    if (!menuOpen) return;
+    closeRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
 
   return (
     <nav className="absolute top-0 left-0 z-10 w-full flex justify-between items-center px-[24px] py-[24px] sm:px-[64px] md:px-[96px] bg-transparent">
@@ -51,25 +63,45 @@ export default function Navbar({ links }: Props){
           )
         )}
       </div>
-      <div onClick={() => setOpen(prevOpen => !prevOpen)} className="flex md:hidden">
-            <MenuIcon width={32} color={"white"} classes={"hover:cursor-pointer"} />
-      </div>
-      <div className={`${open ? 'w-0' : 'w-full'} flex md:hidden min-h-screen bg-black/50 absolute top-0 right-0 overflow-hidden`}>
-        <div className={`${open ? 'w-0' : 'w-64'} ease-out duration-300 h-full bg-white fixed top-0 right-0 flex flex-col rounded-l-lg`}>
-          {!open && (
-            <div onClick={() => setOpen(prevOpen => !prevOpen)} className='mt-8 mr-[24px] self-end'>
-              <XMarkIcon width={32} />
-            </div>
+      <button
+        type="button"
+        onClick={() => setMenuOpen(true)}
+        aria-label="Open menu"
+        aria-expanded={menuOpen}
+        aria-controls="mobile-menu"
+        className="flex md:hidden"
+      >
+        <MenuIcon width={32} color={"white"} />
+      </button>
+      {/* Clicking the dimmed area outside the panel closes the menu. */}
+      <div
+        className={`${menuOpen ? "w-full" : "w-0"} flex md:hidden min-h-screen bg-black/50 absolute top-0 right-0 overflow-hidden`}
+        onClick={() => setMenuOpen(false)}
+      >
+        <div
+          id="mobile-menu"
+          onClick={(e) => e.stopPropagation()}
+          className={`${menuOpen ? "w-64" : "w-0"} ease-out duration-300 h-full bg-white fixed top-0 right-0 flex flex-col rounded-l-lg`}
+        >
+          {menuOpen && (
+            <>
+              <button ref={closeRef} type="button" onClick={() => setMenuOpen(false)} aria-label="Close menu" className="mt-8 mr-[24px] self-end">
+                <XMarkIcon width={32} />
+              </button>
+              <div className="flex flex-col items-center gap-8 mt-12">
+                {links.map((link) => (
+                  <a
+                    key={link.id}
+                    href={link.to}
+                    onClick={() => setMenuOpen(false)}
+                    {...(link.to.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </>
           )}
-          {!open && (
-            <div className="flex flex-col items-center gap-8 mt-12">
-              {links.map(link => (
-                <a key={link.id} href={link.to} {...(link.to.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}>
-                  {link.label}
-                </a>
-              ))}
-            </div>)
-          }
         </div>
       </div>
     </nav>

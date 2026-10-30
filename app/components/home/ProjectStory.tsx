@@ -201,8 +201,12 @@ function Visual({ visual, eager }: { visual: StoryVisual; eager: boolean }) {
     return (
       <img
         src={visual.src}
+        // Every home image has a 768px version next to it, for phones (scripts/check-images.mjs enforces it).
+        srcSet={`${visual.src.replace(/\.webp$/, "-768.webp")} 768w, ${visual.src} 1536w`}
+        sizes="(min-width: 768px) 55vw, 100vw"
         alt={visual.alt}
         loading={eager ? "eager" : "lazy"}
+        {...(eager ? { fetchpriority: "high" } : {})}
         decoding="async"
         className={`h-full w-full object-contain ${visual.tight ? "p-3 md:p-6" : "p-5 md:p-12"}`}
       />

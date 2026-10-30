@@ -39,8 +39,17 @@ export default function App() {
       </head>
       {/* Dark base so no white shows through while mobile browsers paint during scroll. */}
       <body className="bg-[#07080B]">
+        {/* First stop for keyboard users: jump past the navigation. Hidden until focused. */}
+        <a
+          href="#content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:text-[#07080B]"
+        >
+          Skip to content
+        </a>
         <Navbar links={links} />
-        <Outlet />
+        <div id="content" tabIndex={-1} className="outline-none">
+          <Outlet />
+        </div>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

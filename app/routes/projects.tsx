@@ -44,7 +44,7 @@ export default function Project() {
     }
     const open = (img: HTMLImageElement) => {
       openerRef.current = img;
-      setViewer({ index: imgs.indexOf(img), images: imgs.map((i) => ({ src: i.currentSrc || i.src, alt: i.alt })) });
+      setViewer({ index: imgs.indexOf(img), images: imgs.map((i) => ({ src: i.getAttribute("src") || i.src, alt: i.alt })) });
     };
     const onClick = (e: MouseEvent) => {
       if (e.target instanceof HTMLImageElement && imgs.includes(e.target)) open(e.target);

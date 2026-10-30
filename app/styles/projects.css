@@ -29,7 +29,16 @@
     margin-bottom: 8px;
 }
 
-/* The subtitle right under the title. */
+/* The subtitle right under the title (a paragraph, so heading levels stay in order). */
+.case .case-subtitle {
+    font-size: 19px;
+    line-height: 1.35;
+    margin-top: 12px;
+    margin-bottom: 8px;
+    font-weight: 400;
+    color: rgb(255 255 255 / 0.75);
+}
+
 .case h1 + h3 {
     margin-top: 12px;
     font-weight: 400;

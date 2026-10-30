@@ -2,6 +2,7 @@ import { Link } from "@remix-run/react";
 import type { Project } from "~/types/Project";
 
 const LINKS = [
+  { label: "Email", href: "mailto:max.lopez.dev@gmail.com" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/max-lopez-dev/" },
   { label: "GitHub", href: "https://github.com/SoyTanMax" },
 ];
@@ -45,7 +46,11 @@ export default function Closing({ more }: { more: Project[] }) {
         <span className="text-white/50">Max López · Monterrey, Nuevo León</span>
         <span className="flex gap-6">
           {LINKS.map((l) => (
-            <a key={l.label} href={l.href} target="_blank" rel="noreferrer" className="text-white/70 transition hover:text-white">
+            <a
+              key={l.label}
+              href={l.href}
+              {...(l.href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
+              className="text-white/70 transition hover:text-white">
               {l.label}
             </a>
           ))}

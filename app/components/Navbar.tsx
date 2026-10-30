@@ -27,12 +27,11 @@ export default function Navbar({ links }: Props){
       <div className="hidden md:flex items-center space-x-4">
         {links.map((link) =>
           // External links are plain anchors: NavLink drops rel on absolute URLs.
-          link.to.startsWith("http") ? (
+          /^(https?:|mailto:)/.test(link.to) ? (
             <a
               key={link.to}
               href={link.to}
-              target="_blank"
-              rel="noreferrer"
+              {...(link.to.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
               className="text-slate-400 hover:text-white transition duration-200"
             >
               {link.label}

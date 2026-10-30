@@ -12,7 +12,7 @@ that audience: product decisions first, then how they were built.
   Live at https://www.maxlopez.me (the apex redirects to www). Meta tags (og:url, og:image) use the www URL.
 - Case studies are MDX routes: `app/routes/projects.<id>.mdx`.
 - The project list (cards, order) lives in `app/data/projects.ts`. Order is deliberate: POS first (internal
-  tool, closest to the Revolut Platform role), then FY25. `public/og/home.jpg` says "5 projects"; update it if the count changes.
+  tool, closest to the Revolut Platform role), then FY25. Taconomics and Persona Lamps are archived ("More work"). `public/og/home.jpg` says "4 projects"; update it if the count changes.
 - Case study styles: `app/styles/projects.css`.
 
 ## Technical notes
@@ -35,8 +35,8 @@ that audience: product decisions first, then how they were built.
 - `projects.pos-redesign.mdx` — Pide Directo POS, Version 1 (solo design + React, 2 weeks) and Version 2
   checkout (solo design, frontend implemented with help). Both shipped.
 - `projects.cemex.mdx` — CEMEX Vertua. Max's role: UX Researcher and UX/UI Designer.
-- `projects.taconomics.mdx`, `projects.persona-lamps.mdx` — older freelance/Web3 cases.
-  Persona Lamps is archived (listed under "More work", not a home card); Max designed and built it (Vue.js).
+- `projects.taconomics.mdx`, `projects.persona-lamps.mdx` — older freelance/Web3 cases, both archived
+  (listed under "More work", not home stories); Max designed and built Persona Lamps (Vue.js).
 
 ## Drafts
 

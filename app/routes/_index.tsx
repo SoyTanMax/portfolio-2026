@@ -7,10 +7,10 @@ import { projects } from "~/data/projects";
 export const meta: V2_MetaFunction = () => {
   return [
     { title: "Max López - Design Engineer" },
-    { name: "description", content: "Max López, Design Engineer in Monterrey, Nuevo León. I design and build websites and apps, from the first concept to something people can actually use." },
+    { name: "description", content: "Max López, Design Engineer in Monterrey, Nuevo León. I design and build internal tools, design systems and web products, from Figma to production." },
     { property: "og:type", content: "website" },
     { property: "og:title", content: "Max López - Design Engineer" },
-    { property: "og:description", content: "From idea to a working product. I design and build websites and apps, from the first concept to something people can actually use." },
+    { property: "og:description", content: "From idea to a working product. I design and build internal tools, design systems and web products, from Figma to production." },
     { property: "og:url", content: "https://www.maxlopez.me/" },
     { property: "og:image", content: "https://www.maxlopez.me/og/home.jpg" },
     { property: "og:image:width", content: "1200" },

@@ -23,8 +23,8 @@ export const projects: Project[] = [
         },
         {
           label: "What I did",
-          body: "Redesigned the order flow and built it in React in two weeks. Later, on my own initiative, I turned a run of new features into a second version: a checkout with saved orders, tips, discounts, credits and more payment methods.",
-          visual: { type: "image", src: "/home/pos/3-pay.webp", alt: "The redesigned checkout on tablet, with payment methods, keypad and order summary" },
+          body: "Redesigned the order flow and built it in React in two weeks. Later, on my own initiative, a second version: a multi-step checkout, and one view of every order from every channel, as cards or a table.",
+          visual: { type: "image", src: "/home/pos/3-all-orders.webp", alt: "All orders as a table, with orders from Pide Directo, Didi and the POS grouped by status" },
         },
         {
           label: "Result",
@@ -142,6 +142,7 @@ export const projects: Project[] = [
     id: "taconomics",
     title: "Taconomics",
     tagline: "Freelance · NFT marketplace · UX/UI + branding",
+    archived: true,
     story: {
       eyebrow: "Freelance · UX/UI + branding",
       stage: "#FFEFD3",

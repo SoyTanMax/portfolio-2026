@@ -15,7 +15,7 @@ export default function Intro() {
             From idea to a working product.
           </h1>
           <p className="mt-5 max-w-[640px] text-lg leading-relaxed text-white/70 md:mt-6 md:text-[22px]">
-            I design and build websites and apps, from the first concept to something people can actually use.
+            I design and build internal tools, design systems and web products, from Figma to production.
           </p>
         </div>
         <h2 className="mt-20 font-display text-[28px] font-semibold leading-tight text-white md:mt-28 md:text-[40px]">My work</h2>

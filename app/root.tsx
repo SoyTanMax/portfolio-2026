@@ -26,6 +26,7 @@ export default function App() {
     { id: 0, to: "/", label: "Work" },
     { id: 1, to: "https://www.linkedin.com/in/max-lopez-dev/", label: "LinkedIn" },
     { id: 2, to: "https://github.com/SoyTanMax", label: "GitHub" },
+    { id: 3, to: "mailto:max.lopez.dev@gmail.com", label: "Email" },
   ];
 
   return (
